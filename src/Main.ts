@@ -134,6 +134,14 @@ class Main extends egret.DisplayObjectContainer {
         NPC2.addTask(task);
         taskService.addTask(task);
         taskService.finish(task.getid());
+
+
+        this.addChild(NPC1);
+        this.addChild(NPC2);
+        NPC1.x=100;
+        NPC1.y=100;
+        NPC2.x=500;
+        NPC2.y=500;
     }
 
     /**

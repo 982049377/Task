@@ -1,7 +1,19 @@
-var NPC = (function () {
+var NPC = (function (_super) {
+    __extends(NPC, _super);
     function NPC(name) {
+        _super.call(this);
         this._tasklist = [];
         this._name = name;
+        this._role = new Role();
+        this._role.firstCreat();
+        this.addChild(this._role);
+        var label = new egret.TextField();
+        label.text = this._name;
+        this.addChild(label);
+        label.x = -30;
+        label.y = 70;
+        label.$setTextColor(0X00000);
+        label.size = 40;
     }
     var d = __define,c=NPC,p=c.prototype;
     p.onchange = function (task) {
@@ -19,7 +31,7 @@ var NPC = (function () {
         this._tasklist.push(task);
     };
     return NPC;
-}());
+}(egret.DisplayObjectContainer));
 egret.registerClass(NPC,'NPC',["Observer"]);
 var TaskPanel = (function () {
     function TaskPanel() {

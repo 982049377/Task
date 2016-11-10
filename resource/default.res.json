@@ -1,23 +1,105 @@
 {
-	"groups":[
-	{
-		"keys":"bg_jpg,egret_icon_png,description_json",
-		"name":"preload"
-	}],
-	"resources":[
-	{
-		"name":"bg_jpg",
-		"type":"image",
-		"url":"assets/bg.jpg"
-	},
-	{
-		"name":"egret_icon_png",
-		"type":"image",
-		"url":"assets/egret_icon.png"
-	},
-	{
-		"name":"description_json",
-		"type":"json",
-		"url":"config/description.json"
-	}]
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,10000_png,10001_png,10002_png,10003_png,10004_png,10005_png,10006_png,10007_png,Idle0_png,Idle1_png,Idle2_png,Idle3_png,road_jpg,road_png,water_jpg,water_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "10000_png",
+			"type": "image",
+			"url": "assets/10000.png"
+		},
+		{
+			"name": "10001_png",
+			"type": "image",
+			"url": "assets/10001.png"
+		},
+		{
+			"name": "10002_png",
+			"type": "image",
+			"url": "assets/10002.png"
+		},
+		{
+			"name": "10003_png",
+			"type": "image",
+			"url": "assets/10003.png"
+		},
+		{
+			"name": "10004_png",
+			"type": "image",
+			"url": "assets/10004.png"
+		},
+		{
+			"name": "10005_png",
+			"type": "image",
+			"url": "assets/10005.png"
+		},
+		{
+			"name": "10006_png",
+			"type": "image",
+			"url": "assets/10006.png"
+		},
+		{
+			"name": "10007_png",
+			"type": "image",
+			"url": "assets/10007.png"
+		},
+		{
+			"name": "Idle0_png",
+			"type": "image",
+			"url": "assets/Idle0.png"
+		},
+		{
+			"name": "Idle1_png",
+			"type": "image",
+			"url": "assets/Idle1.png"
+		},
+		{
+			"name": "Idle2_png",
+			"type": "image",
+			"url": "assets/Idle2.png"
+		},
+		{
+			"name": "Idle3_png",
+			"type": "image",
+			"url": "assets/Idle3.png"
+		},
+		{
+			"name": "road_jpg",
+			"type": "image",
+			"url": "assets/road.jpg"
+		},
+		{
+			"name": "road_png",
+			"type": "image",
+			"url": "assets/road.png"
+		},
+		{
+			"name": "water_jpg",
+			"type": "image",
+			"url": "assets/water.jpg"
+		},
+		{
+			"name": "water_png",
+			"type": "image",
+			"url": "assets/water.png"
+		}
+	]
 }

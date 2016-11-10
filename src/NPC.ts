@@ -2,11 +2,24 @@ interface Observer{
     onchange(task:Task);
 }
 
-class NPC  implements Observer{
-    private _name;
+class NPC extends egret.DisplayObjectContainer  implements Observer{
+    private _name:string;
+    private _role:Role;
     private _tasklist:Task[]=[];
     public constructor(name:string){
+        super();
         this._name=name;
+        this._role=new Role();
+        this._role.firstCreat();
+        this.addChild(this._role);
+
+        var label=new egret.TextField();
+        label.text=this._name;
+        this.addChild(label);
+        label.x=-30;
+        label.y=70;
+        label.$setTextColor(0X00000);
+        label.size=40;
     }
     public onchange(task:Task){
         for(var s of this._tasklist){
