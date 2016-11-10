@@ -6,10 +6,10 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
     private _name:string;
     private _role:Role;
     private _tasklist:Task[]=[];
-    public constructor(name:string){
+    public constructor(name:string,idle:string[],walk:string[]){
         super();
         this._name=name;
-        this._role=new Role();
+        this._role=new Role(idle,walk);
         this._role.firstCreat();
         this.addChild(this._role);
 

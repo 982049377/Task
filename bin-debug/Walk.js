@@ -1,10 +1,9 @@
 var Walk = (function () {
-    function Walk(pperson) {
-        this.Walklist = ["10000_png", "10001_png", "10002_png", "10003_png", "10004_png", "10005_png", "10006_png", "10007_png"];
+    function Walk(pperson, walk) {
         this.Walkcount = -1;
-        this.person = new Role();
         this.i = 0;
         this.person = pperson;
+        this.Walklist = walk;
     }
     var d = __define,c=Walk,p=c.prototype;
     p.onEnter = function () {
@@ -20,7 +19,7 @@ var Walk = (function () {
         if (this.Walkcount >= this.Walklist.length)
             this.Walkcount = 0;
         if (this.i == 10) {
-            this.person._role.texture = RES.getRes(this.Walklist[this.Walkcount]);
+            this.person._person.texture = RES.getRes(this.Walklist[this.Walkcount]);
             this.i = 0;
         }
         //  console.log("Walk");

@@ -1,11 +1,12 @@
 var Role = (function (_super) {
     __extends(Role, _super);
-    //private _speed:number=1.5;
-    //private _astar:Astar;
-    //private mapsize=100;
-    function Role() {
+    function Role(idle, walk) {
         _super.call(this);
         this._person = new egret.Bitmap();
+        this.idle = [];
+        this.walk = [];
+        this.idle = idle;
+        this.walk = walk;
     }
     var d = __define,c=Role,p=c.prototype;
     p.SetState = function (e) {
@@ -19,7 +20,7 @@ var Role = (function (_super) {
         this._person = this.createBitmapByName("10000_png");
         this.setAnchor(this._person);
         this.addChild(this._person);
-        var idle = new Idle(this);
+        var idle = new Idle(this, this.idle);
         this._State = idle;
         this._State.onEnter();
     };
@@ -36,4 +37,4 @@ var Role = (function (_super) {
     return Role;
 }(egret.DisplayObjectContainer));
 egret.registerClass(Role,'Role');
-//# sourceMappingURL=Person.js.map
+//# sourceMappingURL=Role.js.map

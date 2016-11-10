@@ -1,10 +1,10 @@
 var NPC = (function (_super) {
     __extends(NPC, _super);
-    function NPC(name) {
+    function NPC(name, idle, walk) {
         _super.call(this);
         this._tasklist = [];
         this._name = name;
-        this._role = new Role();
+        this._role = new Role(idle, walk);
         this._role.firstCreat();
         this.addChild(this._role);
         var label = new egret.TextField();

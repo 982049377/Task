@@ -107,10 +107,12 @@ var Main = (function (_super) {
         var stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
-        var NPC1 = new NPC("Peter");
-        var NPC2 = new NPC("Tom");
+        var NPC1idlelist = ["NPC01_01_png", "NPC01_02_png", "NPC01_03_png", "NPC01_04_png", "NPC01_05_png", "NPC01_06_png"];
+        var NPC2idlelist = ["NPC02_01_png", "NPC02_02_png", "NPC02_03_png", "NPC02_04_png"];
+        var NPC1 = new NPC("甘宁", NPC1idlelist, NPC1idlelist);
+        var NPC2 = new NPC("陆逊", NPC2idlelist, NPC2idlelist);
         var taskService = TaskService.getIntance();
-        var task = new Task("1111", "helloworld", "Peter", "Tom");
+        var task = new Task("1111", "helloworld", "甘宁", "陆逊");
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
         NPC1.addTask(task);

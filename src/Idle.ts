@@ -1,9 +1,10 @@
 class Idle implements State{
-        public constructor(pperson:Role) {
+        public constructor(pperson:Role,idle:string[]) {
             this.person=pperson;
+            this.Idlelist=idle;
         }
-        private person:Role=new Role();;
-        private Idlelist=["Idle0_png","Idle1_png","Idle2_png","Idle3_png"];
+        private person:Role;
+        private Idlelist:string[];
         private count:number=-1;
         private i:number=0;
 
@@ -24,7 +25,7 @@ class Idle implements State{
           //var na=(i+10000).toString()+"_png";
           //console.log("Idle");
           if(this.i==10){
-             this.person._role.texture=RES.getRes(this.Idlelist[this.count]);
+             this.person._person.texture=RES.getRes(this.Idlelist[this.count]);
              this.i=0;
           }
           return true;

@@ -8,16 +8,16 @@ var game_file_list = [
 	"libs/modules/game/game.native.js",
 	"libs/modules/res/res.js",
 	"libs/modules/tween/tween.js",
+	"bin-debug/Idle.js",
 	"bin-debug/LoadingUI.js",
+	"bin-debug/MachineState.js",
 	"bin-debug/Main.js",
 	"bin-debug/NPC.js",
+	"bin-debug/State.js",
 	"bin-debug/Task.js",
 	"bin-debug/TaskService.js",
-	"bin-debug/Idle.js",
-	"bin-debug/MachineState.js",
-	"bin-debug/Person.js",
-	"bin-debug/State.js",
 	"bin-debug/Walk.js",
+	"bin-debug/Role.js",
 	//----auto game_file_list end----
 ];
 
