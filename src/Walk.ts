@@ -1,4 +1,3 @@
-
 class Walk implements State{
           private Walklist:string[];
           private Walkcount=-1;

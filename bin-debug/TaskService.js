@@ -24,6 +24,14 @@ var TaskService = (function () {
         this._tasklist[id].finish();
         this.notify(id);
     };
+    p.accept = function (id) {
+        this._tasklist[id].accept();
+        this.notify(id);
+    };
+    p.during = function (id) {
+        this._tasklist[id].during();
+        this.notify(id);
+    };
     p.notify = function (id) {
         for (var _i = 0, _a = this._observerlist; _i < _a.length; _i++) {
             var s = _a[_i];

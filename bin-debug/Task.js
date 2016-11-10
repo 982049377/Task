@@ -4,6 +4,7 @@ var Task = (function () {
         this._name = name;
         this._sender = sender;
         this._receiver = receiver;
+        this._status = statusType.Unacceptable;
     }
     var d = __define,c=Task,p=c.prototype;
     p.getid = function () {
@@ -18,11 +19,28 @@ var Task = (function () {
     p.getreceiver = function () {
         return this._receiver;
     };
+    p.getstatus = function () {
+        return this._status;
+    };
     p.finish = function () {
         //var ts = new TaskService();
         //TaskService.instance;
         console.log(this._status);
         this._status = statusType.Complete;
+        console.log(this._status);
+    };
+    p.accept = function () {
+        //var ts = new TaskService();
+        //TaskService.instance;
+        console.log(this._status);
+        this._status = statusType.Acceptable;
+        console.log(this._status);
+    };
+    p.during = function () {
+        //var ts = new TaskService();
+        //TaskService.instance;
+        console.log(this._status);
+        this._status = statusType.Working;
         console.log(this._status);
     };
     return Task;

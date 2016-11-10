@@ -118,13 +118,14 @@ var Main = (function (_super) {
         NPC1.addTask(task);
         NPC2.addTask(task);
         taskService.addTask(task);
-        taskService.finish(task.getid());
+        //taskService.finish(task.getid());
+        taskService.accept(task.getid());
         this.addChild(NPC1);
         this.addChild(NPC2);
-        NPC1.x = 100;
-        NPC1.y = 100;
-        NPC2.x = 500;
-        NPC2.y = 500;
+        NPC1.x = 200;
+        NPC1.y = 200;
+        NPC2.x = 600;
+        NPC2.y = 700;
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

@@ -29,6 +29,14 @@ class TaskService{
         this._tasklist[id].finish();
         this.notify(id);
     }
+    public accept(id:string){
+        this._tasklist[id].accept();
+        this.notify(id);
+    }
+    public during(id:string){
+        this._tasklist[id].during();
+        this.notify(id);
+    }
     public notify(id:string){
         for(var s of this._observerlist)
             s.onchange(this._tasklist[id]);
