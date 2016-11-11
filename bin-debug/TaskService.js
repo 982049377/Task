@@ -21,16 +21,40 @@ var TaskService = (function () {
         this._observerlist.push(observer);
     };
     p.finish = function (id) {
-        this._tasklist[id].finish();
-        this.notify(id);
+        if (this._tasklist[id] == null) {
+            throw "没有这个任务";
+        }
+        if (this._tasklist[id].getstatus() == statusType.Cancomplete) {
+            this._tasklist[id].finish();
+            this.notify(id);
+        }
     };
     p.accept = function (id) {
-        this._tasklist[id].accept();
-        this.notify(id);
+        if (this._tasklist[id] == null) {
+            throw "没有这个任务";
+        }
+        if (this._tasklist[id].getstatus() == statusType.Unacceptable) {
+            this._tasklist[id].accept();
+            this.notify(id);
+        }
     };
     p.during = function (id) {
-        this._tasklist[id].during();
-        this.notify(id);
+        if (this._tasklist[id] == null) {
+            throw "没有这个任务";
+        }
+        if (this._tasklist[id].getstatus() == statusType.Acceptable) {
+            this._tasklist[id].during();
+            this.notify(id);
+        }
+    };
+    p.Canfinish = function (id) {
+        if (this._tasklist[id] == null) {
+            throw "没有这个任务";
+        }
+        if (this._tasklist[id].getstatus() == statusType.Working) {
+            this._tasklist[id].Canfinish();
+            this.notify(id);
+        }
     };
     p.notify = function (id) {
         for (var _i = 0, _a = this._observerlist; _i < _a.length; _i++) {

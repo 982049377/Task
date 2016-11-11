@@ -20,6 +20,7 @@ var NPC = (function (_super) {
         this.taskresponse.x = -50;
         this.taskresponse.y = -180;
         this.addChild(this.taskresponse);
+        this.responseTask();
     }
     var d = __define,c=NPC,p=c.prototype;
     p.onchange = function (task) {
@@ -30,33 +31,68 @@ var NPC = (function (_super) {
                     console.log(this._name + ":发出任务");
                 if (s.getreceiver() == this._name)
                     console.log(this._name + ":完成任务");
-                this.responseTask();
             }
         }
+        this.responseTask();
     };
     p.addTask = function (task) {
         this._tasklist.push(task);
+    };
+    //是否身上有未发出的任务
+    p.hasSendTask = function () {
+        for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
+            var s = _a[_i];
+            if (s.getsender() == this._name && s.getstatus() == statusType.Acceptable) {
+                return true;
+            }
+        }
+        return false;
+    };
+    //是否身上有未接受的任务
+    p.hasReceiveTask = function () {
+        for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
+            var s = _a[_i];
+            if (s.getreceiver() == this._name && s.getstatus() == statusType.Working) {
+                return true;
+            }
+            if (s.getreceiver() == this._name && s.getstatus() == statusType.Cancomplete) {
+                return true;
+            }
+        }
+        return false;
     };
     p.responseTask = function () {
         /**缺最优算法 */
         for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
             var s = _a[_i];
+            //任务发出不可接受，没有表情
             if (s.getstatus() == statusType.Unacceptable) {
                 this.taskresponse.texture = RES.getRes("0_png");
+                console.log("0.png");
             }
+            //任务发出可接受，蓝色问号
             if (s.getsender() == this._name && s.getstatus() == statusType.Acceptable) {
                 this.taskresponse.texture = RES.getRes("1_png");
+                console.log("1.png");
             }
+            //任务进行中，灰色问号
             if (s.getreceiver() == this._name && s.getstatus() == statusType.Working) {
                 this.taskresponse.texture = RES.getRes("2_png");
+                console.log("2.png");
             }
+            //任务可完成但没提交，金色问号
             if (s.getreceiver() == this._name && s.getstatus() == statusType.Cancomplete) {
                 this.taskresponse.texture = RES.getRes("3_png");
+                console.log("3.png");
             }
+            //任务提交完成，没有表情
             if (s.getreceiver() == this._name && s.getstatus() == statusType.Complete) {
-                this.taskresponse.texture = RES.getRes("4_png");
+                this.taskresponse.texture = RES.getRes("0_png");
+                console.log("0.png");
             }
         }
+        if (!this.hasSendTask() && !this.hasReceiveTask())
+            this.taskresponse.texture = RES.getRes("0_png");
     };
     return NPC;
 }(egret.DisplayObjectContainer));

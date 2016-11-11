@@ -26,16 +26,44 @@ class TaskService{
         this._observerlist.push(observer);
     }
     public finish(id:string){
-        this._tasklist[id].finish();
-        this.notify(id);
+        if(this._tasklist[id]==null)
+        {
+            throw "没有这个任务";
+        }
+        if(this._tasklist[id].getstatus()==statusType.Cancomplete){
+            this._tasklist[id].finish();
+            this.notify(id);
+        }
     }
     public accept(id:string){
-        this._tasklist[id].accept();
-        this.notify(id);
+        if(this._tasklist[id]==null)
+        {
+            throw "没有这个任务";
+        }
+        if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+            this._tasklist[id].accept();
+            this.notify(id);
+        }
     }
     public during(id:string){
-        this._tasklist[id].during();
-        this.notify(id);
+        if(this._tasklist[id]==null)
+        {
+            throw "没有这个任务";
+        }
+        if(this._tasklist[id].getstatus()==statusType.Acceptable){
+            this._tasklist[id].during();
+            this.notify(id);
+        }
+    }
+    public Canfinish(id:string){
+        if(this._tasklist[id]==null)
+        {
+            throw "没有这个任务";
+        }
+        if(this._tasklist[id].getstatus()==statusType.Working){
+            this._tasklist[id].Canfinish();
+            this.notify(id);
+        }
     }
     public notify(id:string){
         for(var s of this._observerlist)

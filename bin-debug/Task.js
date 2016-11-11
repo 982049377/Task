@@ -23,24 +23,23 @@ var Task = (function () {
         return this._status;
     };
     p.finish = function () {
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status = statusType.Complete;
         console.log(this._status);
     };
     p.accept = function () {
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status = statusType.Acceptable;
         console.log(this._status);
     };
     p.during = function () {
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status = statusType.Working;
+        console.log(this._status);
+    };
+    p.Canfinish = function () {
+        console.log(this._status);
+        this._status = statusType.Cancomplete;
         console.log(this._status);
     };
     return Task;

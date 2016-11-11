@@ -124,7 +124,8 @@ class Main extends egret.DisplayObjectContainer {
         sky.width = stageW;
         sky.height = stageH;
 
-
+        var NPC1Field=new egret.DisplayObjectContainer();
+        var NPC2Field=new egret.DisplayObjectContainer();
         var NPC1idlelist=["NPC01_01_png","NPC01_02_png","NPC01_03_png","NPC01_04_png","NPC01_05_png","NPC01_06_png"];
         var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
         var NPC1=new NPC("甘宁",NPC1idlelist,NPC1idlelist);
@@ -140,13 +141,36 @@ class Main extends egret.DisplayObjectContainer {
 
         //taskService.finish(task.getid());
         taskService.accept(task.getid());
+        //taskService.during(task.getid());
+        // this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+        //      taskService.during(task.getid());
+        //      console.log("可接受变为执行中");
+        // },this);
 
-        this.addChild(NPC1);
-        this.addChild(NPC2);
-        NPC1.x=200;
-        NPC1.y=200;
-        NPC2.x=600;
-        NPC2.y=700;
+        //NPC不可直接点击，需要容器盛装
+        NPC1Field.touchEnabled=true;
+        NPC1Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+             taskService.during(task.getid());
+             console.log("可接受变为执行中");
+             taskService.Canfinish(task.getid());
+        },this);
+        NPC2Field.touchEnabled=true;
+        NPC2Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+             taskService.finish(task.getid());
+             console.log("执行中变为完成");
+        },this);
+        NPC1Field.addChild(NPC1);
+        NPC2Field.addChild(NPC2);
+        this.addChild(NPC1Field);
+        this.addChild(NPC2Field);
+        NPC1Field.x=200;
+        NPC1Field.y=200;
+        NPC1Field.width=100;
+        NPC1Field.height=100;
+        NPC2Field.x=600;
+        NPC2Field.y=700;
+        NPC2Field.width=100;
+        NPC2Field.height=100;
     }
 
     /**

@@ -30,25 +30,24 @@ class Task{
         return this._status;
     }
     public finish(){
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status=statusType.Complete;
         console.log(this._status);
     }
 
      public accept(){
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status=statusType.Acceptable;
         console.log(this._status);
     }
      public during(){
-        //var ts = new TaskService();
-        //TaskService.instance;
         console.log(this._status);
         this._status=statusType.Working;
+        console.log(this._status);
+    }
+    public Canfinish(){
+        console.log(this._status);
+        this._status=statusType.Cancomplete;
         console.log(this._status);
     }
     
