@@ -21,9 +21,11 @@ var NPC = (function (_super) {
         this.taskresponse.y = -180;
         this.addChild(this.taskresponse);
         this.responseTask();
+        this._tasklist = TaskService.getIntance()._tasklist;
     }
     var d = __define,c=NPC,p=c.prototype;
     p.onchange = function (task) {
+        this._tasklist = TaskService.getIntance()._tasklist;
         for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
             var s = _a[_i];
             if (s.getid() == task.getid()) {
@@ -35,9 +37,9 @@ var NPC = (function (_super) {
         }
         this.responseTask();
     };
-    p.addTask = function (task) {
-        this._tasklist.push(task);
-    };
+    // public addTask(task:Task){
+    //     this._tasklist.push(task);
+    // }
     //是否身上有未发出的任务
     p.hasSendTask = function () {
         for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {

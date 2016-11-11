@@ -22,7 +22,7 @@ var TaskService = (function () {
     };
     p.finish = function (id) {
         if (this._tasklist[id] == null) {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if (this._tasklist[id].getstatus() == statusType.Cancomplete) {
             this._tasklist[id].finish();
@@ -31,7 +31,7 @@ var TaskService = (function () {
     };
     p.accept = function (id) {
         if (this._tasklist[id] == null) {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if (this._tasklist[id].getstatus() == statusType.Unacceptable) {
             this._tasklist[id].accept();
@@ -40,7 +40,7 @@ var TaskService = (function () {
     };
     p.during = function (id) {
         if (this._tasklist[id] == null) {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if (this._tasklist[id].getstatus() == statusType.Acceptable) {
             this._tasklist[id].during();
@@ -49,7 +49,7 @@ var TaskService = (function () {
     };
     p.Canfinish = function (id) {
         if (this._tasklist[id] == null) {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if (this._tasklist[id].getstatus() == statusType.Working) {
             this._tasklist[id].Canfinish();

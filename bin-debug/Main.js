@@ -115,11 +115,11 @@ var Main = (function (_super) {
         var NPC2 = new NPC("陆逊", NPC2idlelist, NPC2idlelist);
         var taskService = TaskService.getIntance();
         var task = new Task("1111", "helloworld", "甘宁", "陆逊");
+        taskService.addTask(task);
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
-        NPC1.addTask(task);
-        NPC2.addTask(task);
-        taskService.addTask(task);
+        // NPC1.addTask(task);
+        // NPC2.addTask(task);
         //taskService.finish(task.getid());
         taskService.accept(task.getid());
         //taskService.during(task.getid());

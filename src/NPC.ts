@@ -29,8 +29,10 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
         this.taskresponse.y=-180;
         this.addChild(this.taskresponse);
         this.responseTask();
+        this._tasklist=TaskService.getIntance()._tasklist;
     }
     public onchange(task:Task){
+        this._tasklist=TaskService.getIntance()._tasklist;
         for(var s of this._tasklist){
             if(s.getid()==task.getid()){
                 if(s.getsender() == this._name)
@@ -41,9 +43,9 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
         }
         this.responseTask();
     }
-    public addTask(task:Task){
-        this._tasklist.push(task);
-    }
+    // public addTask(task:Task){
+    //     this._tasklist.push(task);
+    // }
 //是否身上有未发出的任务
     private hasSendTask():boolean{
         for(var s of this._tasklist){

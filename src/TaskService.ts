@@ -28,7 +28,7 @@ class TaskService{
     public finish(id:string){
         if(this._tasklist[id]==null)
         {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if(this._tasklist[id].getstatus()==statusType.Cancomplete){
             this._tasklist[id].finish();
@@ -38,7 +38,7 @@ class TaskService{
     public accept(id:string){
         if(this._tasklist[id]==null)
         {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if(this._tasklist[id].getstatus()==statusType.Unacceptable){
             this._tasklist[id].accept();
@@ -48,7 +48,7 @@ class TaskService{
     public during(id:string){
         if(this._tasklist[id]==null)
         {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if(this._tasklist[id].getstatus()==statusType.Acceptable){
             this._tasklist[id].during();
@@ -58,7 +58,7 @@ class TaskService{
     public Canfinish(id:string){
         if(this._tasklist[id]==null)
         {
-            throw "没有这个任务";
+            throw '没有这个任务';
         }
         if(this._tasklist[id].getstatus()==statusType.Working){
             this._tasklist[id].Canfinish();
