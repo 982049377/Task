@@ -17,6 +17,9 @@ class TaskService{
         }
         return TaskService.instance;
     }
+    public getTaskByCustomRule(Rule:Function):Task[]{
+        return Rule(this._tasklist);
+    }
 
     public addTask(task:Task){
         this._tasklist[task.getid()]=task;
@@ -27,7 +30,7 @@ class TaskService{
     }
     public finish(id:string){
         if(this._tasklist[id]==null)
-        {
+        {  
             throw '没有这个任务';
         }
         if(this._tasklist[id].getstatus()==statusType.Cancomplete){

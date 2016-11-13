@@ -124,21 +124,24 @@ class Main extends egret.DisplayObjectContainer {
         sky.width = stageW;
         sky.height = stageH;
 
-        var NPC1Field=new egret.DisplayObjectContainer();
-        var NPC2Field=new egret.DisplayObjectContainer();
-        var NPC1idlelist=["NPC01_01_png","NPC01_02_png","NPC01_03_png","NPC01_04_png","NPC01_05_png","NPC01_06_png"];
-        var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
-        var NPC1=new NPC("甘宁",NPC1idlelist,NPC1idlelist);
-        var NPC2=new NPC("陆逊",NPC2idlelist,NPC2idlelist);
         var taskService:TaskService =TaskService.getIntance() ;
-        var task:Task=new Task("1111","helloworld","甘宁","陆逊");
+        var task:Task=new Task("1111","helloworld","01","02");
 
         taskService.addTask(task);
+
+        var NPC1Field=new egret.DisplayObjectContainer();
+        var NPC2Field=new egret.DisplayObjectContainer();
+        // var NPC1idlelist=["NPC01_01_png","NPC01_02_png","NPC01_03_png","NPC01_04_png","NPC01_05_png","NPC01_06_png"];
+        // var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
+
+        // NPC1idlelist=this.CreatNPC("01");
+        // NPC2idlelist=this.CreatNPC("02");
+        var NPC1=new NPC("01",this.CreatNPC("01"),this.CreatNPC("01"));
+        var NPC2=new NPC("02",this.CreatNPC("02"),this.CreatNPC("02"));
+    
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
-        // NPC1.addTask(task);
-        // NPC2.addTask(task);
-       
+ 
         //taskService.finish(task.getid());
         taskService.accept(task.getid());
         //taskService.during(task.getid());
@@ -163,6 +166,10 @@ class Main extends egret.DisplayObjectContainer {
         NPC2Field.addChild(NPC2);
         this.addChild(NPC1Field);
         this.addChild(NPC2Field);
+
+        NPC1.refreshTask();
+        NPC2.refreshTask();
+        
         NPC1Field.x=200;
         NPC1Field.y=200;
         NPC1Field.width=100;
@@ -172,6 +179,20 @@ class Main extends egret.DisplayObjectContainer {
         NPC2Field.width=100;
         NPC2Field.height=100;
     }
+
+    private CreatNPC(id:string):string[]{
+           var Animationlist:string[]=[];
+           for(var s=0;s<NPC.NPC_LIST[id].Flashlist;s++){
+                if(s<10) Animationlist.push( "NPC"+id+"_0"+s+""+"_png");
+                if(s>10) Animationlist.push( "NPC"+id+"_"+s+""+"_png");
+           }
+           return Animationlist;
+    }
+
+    // private _NPCFlashlist:{[index:string]:number}={
+    //     "01":6,//甘宁
+    //     "02":4 //陆逊
+    // }
 
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

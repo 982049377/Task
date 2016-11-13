@@ -30,6 +30,10 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         _super.call(this);
+        this._NPCFlashlist = {
+            "01": 6,
+            "02": 4 //陆逊
+        };
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     var d = __define,c=Main,p=c.prototype;
@@ -107,19 +111,19 @@ var Main = (function (_super) {
         var stageH = this.stage.stageHeight;
         sky.width = stageW;
         sky.height = stageH;
+        var taskService = TaskService.getIntance();
+        var task = new Task("1111", "helloworld", "01", "02");
+        taskService.addTask(task);
         var NPC1Field = new egret.DisplayObjectContainer();
         var NPC2Field = new egret.DisplayObjectContainer();
-        var NPC1idlelist = ["NPC01_01_png", "NPC01_02_png", "NPC01_03_png", "NPC01_04_png", "NPC01_05_png", "NPC01_06_png"];
-        var NPC2idlelist = ["NPC02_01_png", "NPC02_02_png", "NPC02_03_png", "NPC02_04_png"];
-        var NPC1 = new NPC("甘宁", NPC1idlelist, NPC1idlelist);
-        var NPC2 = new NPC("陆逊", NPC2idlelist, NPC2idlelist);
-        var taskService = TaskService.getIntance();
-        var task = new Task("1111", "helloworld", "甘宁", "陆逊");
-        taskService.addTask(task);
+        // var NPC1idlelist=["NPC01_01_png","NPC01_02_png","NPC01_03_png","NPC01_04_png","NPC01_05_png","NPC01_06_png"];
+        // var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
+        // NPC1idlelist=this.CreatNPC("01");
+        // NPC2idlelist=this.CreatNPC("02");
+        var NPC1 = new NPC("01", this.CreatNPC("01"), this.CreatNPC("01"));
+        var NPC2 = new NPC("02", this.CreatNPC("02"), this.CreatNPC("02"));
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
-        // NPC1.addTask(task);
-        // NPC2.addTask(task);
         //taskService.finish(task.getid());
         taskService.accept(task.getid());
         //taskService.during(task.getid());
@@ -143,6 +147,8 @@ var Main = (function (_super) {
         NPC2Field.addChild(NPC2);
         this.addChild(NPC1Field);
         this.addChild(NPC2Field);
+        NPC1.refreshTask();
+        NPC2.refreshTask();
         NPC1Field.x = 200;
         NPC1Field.y = 200;
         NPC1Field.width = 100;
@@ -151,6 +157,16 @@ var Main = (function (_super) {
         NPC2Field.y = 700;
         NPC2Field.width = 100;
         NPC2Field.height = 100;
+    };
+    p.CreatNPC = function (id) {
+        var Animationlist = [];
+        for (var s = 0; s < this._NPCFlashlist[id]; s++) {
+            if (s < 10)
+                Animationlist.push("NPC" + id + "_0" + s + "" + "_png");
+            if (s > 10)
+                Animationlist.push("NPC" + id + "_" + s + "" + "_png");
+        }
+        return Animationlist;
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

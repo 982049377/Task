@@ -3,14 +3,14 @@ class Task{
     private _name:string;
     private _dris:string;
     private _status:statusType;
-    private _sender:string;
-    private _receiver:string;
+    private _fromNpcId:string;
+    private _toNpcId:string;
 
-    constructor(id:string,name:string,sender:string,receiver:string){
+    constructor(id:string,name:string,fromNpcId:string,toNpcId:string){
         this._id=id;
         this._name=name;
-        this._sender=sender;
-        this._receiver=receiver;
+        this._fromNpcId=fromNpcId;
+        this._toNpcId=toNpcId;
         this._status=statusType.Unacceptable;
     }
 
@@ -20,11 +20,11 @@ class Task{
     public getname():string{
         return this._name;
     }
-    public getsender():string{
-        return this._sender;
+    public getfromNpcId():string{
+        return this._fromNpcId;
     }
-    public getreceiver():string{
-        return this._receiver;
+    public gettoNpcId():string{
+        return this._toNpcId;
     }
     public getstatus():statusType{
         return this._status;

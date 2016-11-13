@@ -1,9 +1,9 @@
 var Task = (function () {
-    function Task(id, name, sender, receiver) {
+    function Task(id, name, fromNpcId, toNpcId) {
         this._id = id;
         this._name = name;
-        this._sender = sender;
-        this._receiver = receiver;
+        this._fromNpcId = fromNpcId;
+        this._toNpcId = toNpcId;
         this._status = statusType.Unacceptable;
     }
     var d = __define,c=Task,p=c.prototype;
@@ -13,11 +13,11 @@ var Task = (function () {
     p.getname = function () {
         return this._name;
     };
-    p.getsender = function () {
-        return this._sender;
+    p.getfromNpcId = function () {
+        return this._fromNpcId;
     };
-    p.getreceiver = function () {
-        return this._receiver;
+    p.gettoNpcId = function () {
+        return this._toNpcId;
     };
     p.getstatus = function () {
         return this._status;

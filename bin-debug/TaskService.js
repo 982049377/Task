@@ -14,6 +14,9 @@ var TaskService = (function () {
         }
         return TaskService.instance;
     };
+    p.getTaskByCustomRule = function (Rule) {
+        return Rule(this._tasklist);
+    };
     p.addTask = function (task) {
         this._tasklist[task.getid()] = task;
     };
