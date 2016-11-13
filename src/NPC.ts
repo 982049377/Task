@@ -48,6 +48,7 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
         this.namelabel.text=this._name;     
         this.getTask();
         this.responseTask();
+        this.onNPCclick();
     }
 
     public onNPCclick(){

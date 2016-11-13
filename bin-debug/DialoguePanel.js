@@ -1,5 +1,7 @@
-var DialoguePanel = (function () {
+var DialoguePanel = (function (_super) {
+    __extends(DialoguePanel, _super);
     function DialoguePanel() {
+        _super.call(this);
         this.texturelist = {
             "接受": "UI01_png",
             "退出": "UI02_png",
@@ -9,13 +11,24 @@ var DialoguePanel = (function () {
             "不能放弃": "UI01_png",
             "不能接受": "UI07_png"
         };
+        this._container = new egret.DisplayObjectContainer();
         this._textfield = new egret.TextField();
         this._firstbutton = new egret.Bitmap();
         this._giveUpButton = new egret.Bitmap();
         this._returnButton = new egret.Bitmap();
+        this._background = new egret.Bitmap();
+        this._background.width = this._container.width;
+        this._background.height = this._container.height;
+        this._container.addChild(this._background);
+        this._container.addChild(this._textfield);
+        this._container.addChild(this._firstbutton);
+        this._container.addChild(this._giveUpButton);
+        this._container.addChild(this._returnButton);
+        this.addChild(this._container);
     }
     var d = __define,c=DialoguePanel,p=c.prototype;
     p.call = function (task, fromself, toself) {
+        console.log("Dialogue.call");
         this._textfield.text = task.getname();
         this._textfield.text += "\n";
         this._textfield.text += task.getdris();
@@ -56,6 +69,6 @@ var DialoguePanel = (function () {
         return str;
     };
     return DialoguePanel;
-}());
+}(egret.DisplayObjectContainer));
 egret.registerClass(DialoguePanel,'DialoguePanel');
 //# sourceMappingURL=DialoguePanel.js.map

@@ -1,9 +1,10 @@
-class DialoguePanel {
+class DialoguePanel extends egret.DisplayObjectContainer{
     private _textfield:egret.TextField;
     private _firstbutton:egret.Bitmap;
     private _giveUpButton:egret.Bitmap;
     private _returnButton:egret.Bitmap;
-
+    private _background:egret.Bitmap;
+    private _container:egret.DisplayObjectContainer;
     private texturelist:{[index:string]:string}={
         "接受":"UI01_png",
         "退出":"UI02_png",
@@ -14,12 +15,24 @@ class DialoguePanel {
         "不能接受":"UI07_png"
     }
     public constructor(){
+        super();
+        this._container=new egret.DisplayObjectContainer();
         this._textfield=new egret.TextField();
         this._firstbutton=new egret.Bitmap();
         this._giveUpButton=new egret.Bitmap();
         this._returnButton=new egret.Bitmap();
+        this._background=new egret.Bitmap();
+        this._background.width=this._container.width;
+        this._background.height=this._container.height;
+        this._container.addChild( this._background);
+        this._container.addChild(this._textfield);
+        this._container.addChild(this._firstbutton);
+        this._container.addChild(this._giveUpButton);
+        this._container.addChild(this._returnButton);
+        this.addChild(this._container);
     }
     public call(task:Task,fromself:boolean,toself:boolean){
+        console.log("Dialogue.call");
         this._textfield.text=task.getname();
         this._textfield.text+="\n";
         this._textfield.text+=task.getdris();

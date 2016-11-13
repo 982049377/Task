@@ -31,6 +31,7 @@ var NPC = (function (_super) {
         this.namelabel.text = this._name;
         this.getTask();
         this.responseTask();
+        this.onNPCclick();
     };
     p.onNPCclick = function () {
         var _this = this;
