@@ -14,7 +14,7 @@ class Role extends egret.DisplayObjectContainer{
             }
             this._State=e;
             this._State.onEnter();
-        }
+      }
       public firstCreat(){
             this._person=this.createBitmapByName("10000_png")
             this.setAnchor(this._person);

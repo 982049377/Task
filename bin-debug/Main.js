@@ -30,10 +30,6 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         _super.call(this);
-        this._NPCFlashlist = {
-            "01": 6,
-            "02": 4 //陆逊
-        };
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     var d = __define,c=Main,p=c.prototype;
@@ -120,8 +116,8 @@ var Main = (function (_super) {
         // var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
         // NPC1idlelist=this.CreatNPC("01");
         // NPC2idlelist=this.CreatNPC("02");
-        var NPC1 = new NPC("01", this.CreatNPC("01"), this.CreatNPC("01"));
-        var NPC2 = new NPC("02", this.CreatNPC("02"), this.CreatNPC("02"));
+        var NPC1 = new NPC("01");
+        var NPC2 = new NPC("02");
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
         //taskService.finish(task.getid());
@@ -158,16 +154,10 @@ var Main = (function (_super) {
         NPC2Field.width = 100;
         NPC2Field.height = 100;
     };
-    p.CreatNPC = function (id) {
-        var Animationlist = [];
-        for (var s = 0; s < this._NPCFlashlist[id]; s++) {
-            if (s < 10)
-                Animationlist.push("NPC" + id + "_0" + s + "" + "_png");
-            if (s > 10)
-                Animationlist.push("NPC" + id + "_" + s + "" + "_png");
-        }
-        return Animationlist;
-    };
+    // private _NPCFlashlist:{[index:string]:number}={
+    //     "01":6,//甘宁
+    //     "02":4 //陆逊
+    // }
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.

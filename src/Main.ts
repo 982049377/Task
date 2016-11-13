@@ -136,8 +136,8 @@ class Main extends egret.DisplayObjectContainer {
 
         // NPC1idlelist=this.CreatNPC("01");
         // NPC2idlelist=this.CreatNPC("02");
-        var NPC1=new NPC("01",this.CreatNPC("01"),this.CreatNPC("01"));
-        var NPC2=new NPC("02",this.CreatNPC("02"),this.CreatNPC("02"));
+        var NPC1=new NPC("01");
+        var NPC2=new NPC("02");
     
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
@@ -180,14 +180,7 @@ class Main extends egret.DisplayObjectContainer {
         NPC2Field.height=100;
     }
 
-    private CreatNPC(id:string):string[]{
-           var Animationlist:string[]=[];
-           for(var s=0;s<NPC.NPC_LIST[id].Flashlist;s++){
-                if(s<10) Animationlist.push( "NPC"+id+"_0"+s+""+"_png");
-                if(s>10) Animationlist.push( "NPC"+id+"_"+s+""+"_png");
-           }
-           return Animationlist;
-    }
+    
 
     // private _NPCFlashlist:{[index:string]:number}={
     //     "01":6,//甘宁

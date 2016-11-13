@@ -1,17 +1,13 @@
 var NPC = (function (_super) {
     __extends(NPC, _super);
-    function NPC(id, idle, walk) {
+    function NPC(id) {
         _super.call(this);
         this._tasklist = [];
-        this._NPClist = {
-            "01": "甘宁",
-            "02": "陆逊" //陆逊
-        };
         this._id = id;
-        this._role = new Role(idle, walk);
+        this._role = new Role(this.CreatNPC(id), this.CreatNPC(id));
         this._role.firstCreat();
         this.addChild(this._role);
-        this._name = this._NPClist[id];
+        this._name = NPC.NPC_LIST[id].name;
         this.taskresponse = new egret.Bitmap();
     }
     var d = __define,c=NPC,p=c.prototype;
@@ -30,6 +26,16 @@ var NPC = (function (_super) {
         this.addChild(this.taskresponse);
         this.getTask();
         this.responseTask();
+    };
+    p.CreatNPC = function (id) {
+        var Animationlist = [];
+        for (var s = 0; s < NPC.NPC_LIST[id].Flashlist; s++) {
+            if (s < 10)
+                Animationlist.push("NPC" + id + "_0" + s + "" + "_png");
+            if (s > 10)
+                Animationlist.push("NPC" + id + "_" + s + "" + "_png");
+        }
+        return Animationlist;
     };
     p.getTask = function () {
         var _this = this;
@@ -118,6 +124,10 @@ var NPC = (function (_super) {
         }
         if (!this.hasSendTask() && !this.hasReceiveTask())
             this.taskresponse.texture = RES.getRes("0_png");
+    };
+    NPC.NPC_LIST = {
+        "01": { name: "甘宁", Flashlist: 6 },
+        "02": { name: "陆逊", Flashlist: 4 } //陆逊
     };
     return NPC;
 }(egret.DisplayObjectContainer));
