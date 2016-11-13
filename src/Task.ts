@@ -13,7 +13,9 @@ class Task{
         this._toNpcId=toNpcId;
         this._status=statusType.Unacceptable;
     }
-
+    public getdris():string{
+        return this._dris;   
+    }
     public getid():string{
         return this._id;
     }

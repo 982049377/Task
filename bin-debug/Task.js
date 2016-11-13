@@ -7,6 +7,9 @@ var Task = (function () {
         this._status = statusType.Unacceptable;
     }
     var d = __define,c=Task,p=c.prototype;
+    p.getdris = function () {
+        return this._dris;
+    };
     p.getid = function () {
         return this._id;
     };

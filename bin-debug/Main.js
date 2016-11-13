@@ -110,13 +110,14 @@ var Main = (function (_super) {
         var taskService = TaskService.getIntance();
         var task = new Task("1111", "helloworld", "01", "02");
         taskService.addTask(task);
-        var NPC1Field = new egret.DisplayObjectContainer();
-        var NPC2Field = new egret.DisplayObjectContainer();
+        //var NPC2Field=new egret.DisplayObjectContainer();
         var NPC1 = new NPC("01");
         var NPC2 = new NPC("02");
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
         //taskService.finish(task.getid());
+        NPC1.call();
+        NPC2.call();
         taskService.accept(task.getid());
         //taskService.during(task.getid());
         // this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
@@ -124,31 +125,34 @@ var Main = (function (_super) {
         //      console.log("可接受变为执行中");
         // },this);
         //NPC不可直接点击，需要容器盛装
-        NPC1Field.touchEnabled = true;
-        NPC1Field.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            taskService.during(task.getid());
-            console.log("可接受变为执行中");
-            taskService.Canfinish(task.getid());
-        }, this);
-        NPC2Field.touchEnabled = true;
-        NPC2Field.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            taskService.finish(task.getid());
-            console.log("执行中变为完成");
-        }, this);
-        NPC1Field.addChild(NPC1);
-        NPC2Field.addChild(NPC2);
-        this.addChild(NPC1Field);
-        this.addChild(NPC2Field);
-        NPC1.refreshTask();
-        NPC2.refreshTask();
-        NPC1Field.x = 200;
-        NPC1Field.y = 200;
-        NPC1Field.width = 100;
-        NPC1Field.height = 100;
-        NPC2Field.x = 600;
-        NPC2Field.y = 700;
-        NPC2Field.width = 100;
-        NPC2Field.height = 100;
+        // NPC1Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+        //      taskService.during(task.getid());
+        //      console.log("可接受变为执行中");
+        //      taskService.Canfinish(task.getid());
+        // },this);
+        // NPC2Field.touchEnabled=true;
+        // NPC2Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+        //      taskService.finish(task.getid());
+        //      console.log("执行中变为完成");
+        // },this);
+        // NPC1Field.addChild(NPC1);
+        // NPC2Field.addChild(NPC2);
+        // this.addChild(NPC1Field);
+        // this.addChild(NPC2Field);
+        this.addChild(NPC1);
+        this.addChild(NPC2);
+        NPC1.x = 200;
+        NPC1.y = 200;
+        NPC2.x = 600;
+        NPC2.y = 700;
+        // NPC1Field.x=200;
+        // NPC1Field.y=200;
+        // NPC1Field.width=100;
+        // NPC1Field.height=100;
+        // NPC2Field.x=600;
+        // NPC2Field.y=700;
+        // NPC2Field.width=100;
+        // NPC2Field.height=100;
     };
     // private _NPCFlashlist:{[index:string]:number}={
     //     "01":6,//甘宁

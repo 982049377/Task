@@ -12,13 +12,13 @@ var game_file_list = [
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/NPC.js",
-	"bin-debug/Task.js",
-	"bin-debug/TaskService.js",
 	"bin-debug/NPCRole/Idle.js",
 	"bin-debug/NPCRole/MachineState.js",
 	"bin-debug/NPCRole/Role.js",
 	"bin-debug/NPCRole/State.js",
 	"bin-debug/NPCRole/Walk.js",
+	"bin-debug/Task.js",
+	"bin-debug/TaskService.js",
 	//----auto game_file_list end----
 ];
 
