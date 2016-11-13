@@ -1,12 +1,10 @@
 class Role extends egret.DisplayObjectContainer{
       public _person:egret.Bitmap=new egret.Bitmap();
       private _State:State;
-      private idle:string[]=[];
-      private walk:string[]=[];
-      public constructor(idle:string[],walk:string[]) {
+      private idlelist:string[]=[];
+      private walklist:string[]=[];
+      public constructor() {
             super();
-            this.idle=idle;
-            this.walk=walk;
       }
       public SetState(e:State){
             if(this._State!=e){
@@ -15,11 +13,14 @@ class Role extends egret.DisplayObjectContainer{
             this._State=e;
             this._State.onEnter();
       }
-      public firstCreat(){
+      public call(idlelist:string[],walklist:string[]){
+            this.idlelist=idlelist;
+            this.walklist=walklist;
+
             this._person=this.createBitmapByName("10000_png")
             this.setAnchor(this._person);
             this.addChild(this._person);
-            var idle:Idle=new Idle (this,this.idle);
+            var idle:Idle=new Idle (this,this.idlelist);
             this._State=idle;
             this._State.onEnter();
       }

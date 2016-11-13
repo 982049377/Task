@@ -4,8 +4,8 @@ var NPC = (function (_super) {
         _super.call(this);
         this._tasklist = [];
         this._id = id;
-        this._role = new Role(this.CreatNPC(id), this.CreatNPC(id));
-        this._role.firstCreat();
+        this._role = new Role();
+        this._role.call(this.CreatNPC(id), this.CreatNPC(id));
         this.addChild(this._role);
         this._name = NPC.NPC_LIST[id].name;
         this.taskresponse = new egret.Bitmap();

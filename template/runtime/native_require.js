@@ -9,16 +9,16 @@ var game_file_list = [
 	"libs/modules/res/res.js",
 	"libs/modules/tween/tween.js",
 	"bin-debug/DialoguePanel.js",
-	"bin-debug/Idle.js",
 	"bin-debug/LoadingUI.js",
-	"bin-debug/MachineState.js",
 	"bin-debug/Main.js",
 	"bin-debug/NPC.js",
-	"bin-debug/Role.js",
-	"bin-debug/State.js",
 	"bin-debug/Task.js",
 	"bin-debug/TaskService.js",
-	"bin-debug/Walk.js",
+	"bin-debug/NPCRole/Idle.js",
+	"bin-debug/NPCRole/MachineState.js",
+	"bin-debug/NPCRole/Role.js",
+	"bin-debug/NPCRole/State.js",
+	"bin-debug/NPCRole/Walk.js",
 	//----auto game_file_list end----
 ];
 

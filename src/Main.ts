@@ -131,11 +131,7 @@ class Main extends egret.DisplayObjectContainer {
 
         var NPC1Field=new egret.DisplayObjectContainer();
         var NPC2Field=new egret.DisplayObjectContainer();
-        // var NPC1idlelist=["NPC01_01_png","NPC01_02_png","NPC01_03_png","NPC01_04_png","NPC01_05_png","NPC01_06_png"];
-        // var NPC2idlelist=["NPC02_01_png","NPC02_02_png","NPC02_03_png","NPC02_04_png"];
-
-        // NPC1idlelist=this.CreatNPC("01");
-        // NPC2idlelist=this.CreatNPC("02");
+ 
         var NPC1=new NPC("01");
         var NPC2=new NPC("02");
     
