@@ -17,7 +17,7 @@ class Role extends egret.DisplayObjectContainer{
             this.idlelist=idlelist;
             this.walklist=walklist;
 
-            this._person=this.createBitmapByName("10000_png")
+            this._person=this.createBitmapByName("NPC01_01_png")
             this.setAnchor(this._person);
             this.addChild(this._person);
             var idle:Idle=new Idle (this,this.idlelist);

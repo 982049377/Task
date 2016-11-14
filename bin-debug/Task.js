@@ -1,7 +1,8 @@
 var Task = (function () {
-    function Task(id, name, fromNpcId, toNpcId) {
+    function Task(id, name, dris, fromNpcId, toNpcId) {
         this._id = id;
         this._name = name;
+        this._dris = dris;
         this._fromNpcId = fromNpcId;
         this._toNpcId = toNpcId;
         this._status = statusType.Unacceptable;

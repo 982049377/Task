@@ -22,10 +22,14 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
         super();
         this.NPCField=new egret.DisplayObjectContainer();
         this._id=id;
-//NPC形象加载
+//NPC形象加载  图片格式有要求305*280；
         this._role=new Role();
         this._role.call(this.CreatNPC(id),this.CreatNPC(id));
+        //this._role.x=170
+        //this._role.y=170;
         this.NPCField.addChild(this._role);
+        this.NPCField.width=this._role.width;
+        this.NPCField.height=this._role.height;
         this._name=NPC.NPC_LIST[id].name
 //NPC头上任务反馈
         this.taskresponse=new egret.Bitmap();   
@@ -52,15 +56,20 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
     }
 
     public onNPCclick(){
-        this.NPCField.touchEnabled=true;
-        this.NPCField.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+        this._role.touchEnabled=true;
+        this._role.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
             var task=this.getOptimalTask();
             var fromself:boolean=false;
             var toself:boolean=false;
             if(task.getfromNpcId()==this._id) fromself=true;
             if(task.gettoNpcId()==this._id) toself=true;
             var  dialogue=new DialoguePanel();
+            dialogue.anchorOffsetX=dialogue.width/2;
+            dialogue.anchorOffsetY=dialogue.height/2;
+            dialogue.x=this.parent.stage.width/2-this.x;
+            dialogue.y=this.parent.stage.height/2-this.y;
             dialogue.call(task,fromself,toself);
+            this.addChild(dialogue);
         },this);
     }
     private getOptimalTask():Task{

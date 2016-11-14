@@ -125,7 +125,7 @@ class Main extends egret.DisplayObjectContainer {
         sky.height = stageH;
 
         var taskService:TaskService =TaskService.getIntance() ;
-        var task:Task=new Task("1111","helloworld","01","02");
+        var task:Task=new Task("1111","helloworld","欢迎来到三国年间","01","02");
 
         taskService.addTask(task);
 
@@ -169,7 +169,7 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(NPC1);
         this.addChild(NPC2);
         NPC1.x=200;NPC1.y=200;
-        NPC2.x=600;NPC2.y=700;
+        NPC2.x=500;NPC2.y=500;
         // NPC1Field.x=200;
         // NPC1Field.y=200;
         // NPC1Field.width=100;

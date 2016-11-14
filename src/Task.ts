@@ -6,9 +6,10 @@ class Task{
     private _fromNpcId:string;
     private _toNpcId:string;
 
-    constructor(id:string,name:string,fromNpcId:string,toNpcId:string){
+    constructor(id:string,name:string,dris:string,fromNpcId:string,toNpcId:string){
         this._id=id;
         this._name=name;
+        this._dris=dris;
         this._fromNpcId=fromNpcId;
         this._toNpcId=toNpcId;
         this._status=statusType.Unacceptable;

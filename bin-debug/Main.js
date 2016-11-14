@@ -108,7 +108,7 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("1111", "helloworld", "01", "02");
+        var task = new Task("1111", "helloworld", "欢迎来到三国年间", "01", "02");
         taskService.addTask(task);
         //var NPC2Field=new egret.DisplayObjectContainer();
         var NPC1 = new NPC("01");
@@ -143,8 +143,8 @@ var Main = (function (_super) {
         this.addChild(NPC2);
         NPC1.x = 200;
         NPC1.y = 200;
-        NPC2.x = 600;
-        NPC2.y = 700;
+        NPC2.x = 500;
+        NPC2.y = 500;
         // NPC1Field.x=200;
         // NPC1Field.y=200;
         // NPC1Field.width=100;
