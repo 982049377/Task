@@ -5,7 +5,7 @@ var TaskPanel = (function (_super) {
         this._tasklist = [];
         this._textfield = new egret.TextField();
         this._textfield.x = 20;
-        this._textfield.y = 20;
+        this._textfield.y = 40;
         this._textfield.width = 360;
         this._textfield.height = 200;
         this._returnButton = new egret.Bitmap();
@@ -29,10 +29,22 @@ var TaskPanel = (function (_super) {
     var d = __define,c=TaskPanel,p=c.prototype;
     p.call = function () {
         this.getTask();
+        var str = "001";
+        TaskService.getIntance().Canfinish(str);
         this._textfield.text = this.getText();
         this._background.texture = RES.getRes("TaskPanelbg_png");
         this._returnButton.texture = RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
+        this.returnButtonListener();
+        this.addChild(this._container);
+    };
+    p.returnButtonListener = function () {
+        var _this = this;
+        this._returnButton.touchEnabled = true;
+        this._returnButton.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            _this.removeChild(_this._container);
+            //this.parent.removeChild(this);
+        }, this);
     };
     p.getText = function () {
         var str = "";

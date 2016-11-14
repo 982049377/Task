@@ -9,7 +9,7 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         this._tasklist=[];
         this._textfield=new egret.TextField();
         this._textfield.x=20;
-        this._textfield.y=20;
+        this._textfield.y=40;
         this._textfield.width=360;
         this._textfield.height=200;
         this._returnButton=new egret.Bitmap();
@@ -32,10 +32,22 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
     }
     public call(){
         this.getTask();
+        var str="001";
+        TaskService.getIntance().Canfinish(str);
         this._textfield.text=this.getText();
         this._background.texture=RES.getRes("TaskPanelbg_png");
         this._returnButton.texture=RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
+        this.returnButtonListener();
+        this.addChild(this._container);
+    }
+    
+    private returnButtonListener(){
+        this._returnButton.touchEnabled=true;
+        this._returnButton.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+            this.removeChild(this._container);
+            //this.parent.removeChild(this);
+        },this)
     }
 
     private getText():string{

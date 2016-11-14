@@ -138,26 +138,32 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     }
     private getGiveUpTexture(task:Task,fromself:boolean,toself:boolean):string{
         var str:string;
-         if(task.getstatus()==statusType.Acceptable && fromself)
-            str=DialoguePanel.texturelist["不能放弃"];
-        if(task.getstatus()==statusType.Acceptable && !fromself)
-            str=DialoguePanel.texturelist["不能放弃"];
-        if(task.getstatus()==statusType.Working && fromself)
-            str=DialoguePanel.texturelist["放弃"];
-        if(task.getstatus()==statusType.Working && !fromself)
-            str=DialoguePanel.texturelist["不能放弃"];
-        if(task.getstatus()==statusType.Cancomplete && fromself)
-            str=DialoguePanel.texturelist["放弃"];
-        if(task.getstatus()==statusType.Cancomplete && !fromself)
-            str=DialoguePanel.texturelist["不能放弃"];
-         if(task.getstatus()==statusType.Working && toself)
-            str=DialoguePanel.texturelist["放弃"];
-        if(task.getstatus()==statusType.Working && !toself)
-            str=DialoguePanel.texturelist["不能放弃"];
-        if(task.getstatus()==statusType.Cancomplete && toself)
-            str=DialoguePanel.texturelist["放弃"];
-        if(task.getstatus()==statusType.Cancomplete && !toself)
-            str=DialoguePanel.texturelist["不能放弃"];
+        if(fromself){
+            if(task.getstatus()==statusType.Acceptable && fromself)
+                str=DialoguePanel.texturelist["不能放弃"];
+            // if(task.getstatus()==statusType.Acceptable && !fromself)
+            //     str=DialoguePanel.texturelist["不能放弃"];
+            if(task.getstatus()==statusType.Working && fromself)
+                str=DialoguePanel.texturelist["放弃"];
+            // if(task.getstatus()==statusType.Working && !fromself)
+            //     str=DialoguePanel.texturelist["不能放弃"];
+            if(task.getstatus()==statusType.Cancomplete && fromself)
+                str=DialoguePanel.texturelist["放弃"];
+            // if(task.getstatus()==statusType.Cancomplete && !fromself)
+            //     str=DialoguePanel.texturelist["不能放弃"];
+        }
+        if(toself){
+            if(task.getstatus()==statusType.Acceptable && toself)
+                str=DialoguePanel.texturelist["不能放弃"];
+            if(task.getstatus()==statusType.Working && toself)
+                str=DialoguePanel.texturelist["放弃"];
+            // if(task.getstatus()==statusType.Working && !toself)
+            //     str=DialoguePanel.texturelist["不能放弃"];
+            if(task.getstatus()==statusType.Cancomplete && toself)
+                str=DialoguePanel.texturelist["放弃"];
+            // if(task.getstatus()==statusType.Cancomplete && !toself)
+            //     str=DialoguePanel.texturelist["不能放弃"];
+        }
         return str;
     }
 }

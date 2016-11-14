@@ -109,7 +109,7 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("1111", "helloworld", "欢迎来到三国年间", "01", "02");
+        var task = new Task("001", "你好，冒险者", "打开任务面板，和陆逊对话", "01", "02");
         taskService.addTask(task);
         var NPC1 = new NPC("01");
         var NPC2 = new NPC("02");
@@ -136,6 +136,8 @@ var Main = (function (_super) {
             var taskPanel = new TaskPanel();
             taskPanel.call();
             _this.addChild(taskPanel);
+            taskPanel.x = 100;
+            taskPanel.y = 600;
         }, this);
     };
     /**
