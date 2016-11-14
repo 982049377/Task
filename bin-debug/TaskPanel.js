@@ -24,10 +24,12 @@ var TaskPanel = (function (_super) {
         this._container.addChild(this._background);
         this._container.addChild(this._returnButton);
         this._container.addChild(this._textfield);
-        this.addChild(this._container);
+        //this.addChild(this._container);
+        this.getTask();
     }
     var d = __define,c=TaskPanel,p=c.prototype;
     p.call = function () {
+        this.addChild(this._container);
         this.getTask();
         var str = "001";
         TaskService.getIntance().Canfinish(str);
@@ -36,7 +38,6 @@ var TaskPanel = (function (_super) {
         this._returnButton.texture = RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
         this.returnButtonListener();
-        this.addChild(this._container);
     };
     p.returnButtonListener = function () {
         var _this = this;

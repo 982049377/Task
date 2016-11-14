@@ -28,9 +28,12 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         this._container.addChild(this._background);
         this._container.addChild(this._returnButton);
         this._container.addChild(this._textfield);
-        this.addChild(this._container);
+        //this.addChild(this._container);
+        this.getTask();
     }
     public call(){
+        this.addChild(this._container);
+        
         this.getTask();
         var str="001";
         TaskService.getIntance().Canfinish(str);
@@ -39,7 +42,6 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         this._returnButton.texture=RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
         this.returnButtonListener();
-        this.addChild(this._container);
     }
     
     private returnButtonListener(){

@@ -132,6 +132,7 @@ var Main = (function (_super) {
         TaskPanelLogo.scaleY = 0.5;
         this.addChild(TaskPanelLogo);
         TaskPanelLogo.touchEnabled = true;
+        //var taskPanel=new TaskPanel();
         TaskPanelLogo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             var taskPanel = new TaskPanel();
             taskPanel.call();

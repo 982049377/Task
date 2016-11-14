@@ -149,6 +149,7 @@ class Main extends egret.DisplayObjectContainer {
         TaskPanelLogo.scaleY=0.5;
         this.addChild(TaskPanelLogo);
         TaskPanelLogo.touchEnabled=true;
+        //var taskPanel=new TaskPanel();
         TaskPanelLogo.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
             var taskPanel=new TaskPanel();
             taskPanel.call();
