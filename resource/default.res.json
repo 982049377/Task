@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,10000_png,10001_png,10002_png,10003_png,10004_png,10005_png,10006_png,10007_png,Idle0_png,Idle1_png,Idle2_png,Idle3_png,road_jpg,road_png,water_jpg,water_png,NPC01_06_png,NPC01_01_png,NPC01_02_png,NPC01_03_png,NPC01_04_png,NPC01_05_png,NPC02_01_png,NPC02_02_png,NPC02_03_png,NPC02_04_png,4_png,3_png,1_png,2_png,0_png,UI05_png,UI06_png,UI01_png,UI02_png,UI03_png,UI04_png,UI07_png,Taskbg_png",
+			"keys": "bg_jpg,egret_icon_png,description_json,10000_png,10001_png,10002_png,10003_png,10004_png,10005_png,10006_png,10007_png,Idle0_png,Idle1_png,Idle2_png,Idle3_png,road_jpg,road_png,water_jpg,water_png,NPC01_06_png,NPC01_01_png,NPC01_02_png,NPC01_03_png,NPC01_04_png,NPC01_05_png,NPC02_01_png,NPC02_02_png,NPC02_03_png,NPC02_04_png,4_png,3_png,1_png,2_png,0_png,UI05_png,UI06_png,UI01_png,UI02_png,UI03_png,UI04_png,UI07_png,Taskbg_png,TaskPanelLogo_png,TaskPanelbg_png",
 			"name": "preload"
 		}
 	],
@@ -215,6 +215,16 @@
 			"name": "Taskbg_png",
 			"type": "image",
 			"url": "assets/Taskbg.png"
+		},
+		{
+			"name": "TaskPanelLogo_png",
+			"type": "image",
+			"url": "assets/TaskPanelLogo.png"
+		},
+		{
+			"name": "TaskPanelbg_png",
+			"type": "image",
+			"url": "assets/TaskPanelbg.png"
 		}
 	]
 }

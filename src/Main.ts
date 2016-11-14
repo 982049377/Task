@@ -126,66 +126,35 @@ class Main extends egret.DisplayObjectContainer {
 
         var taskService:TaskService =TaskService.getIntance() ;
         var task:Task=new Task("1111","helloworld","欢迎来到三国年间","01","02");
-
         taskService.addTask(task);
 
-      
-        //var NPC2Field=new egret.DisplayObjectContainer();
- 
         var NPC1=new NPC("01");
-        var NPC2=new NPC("02");
-    
+        var NPC2=new NPC("02"); 
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
- 
-        //taskService.finish(task.getid());
-       
         NPC1.call();
         NPC2.call();
         taskService.accept(task.getid());
-        //taskService.during(task.getid());
-        // this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-        //      taskService.during(task.getid());
-        //      console.log("可接受变为执行中");
-        // },this);
-
-        //NPC不可直接点击，需要容器盛装
-        // NPC1Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-        //      taskService.during(task.getid());
-        //      console.log("可接受变为执行中");
-        //      taskService.Canfinish(task.getid());
-        // },this);
-        // NPC2Field.touchEnabled=true;
-        // NPC2Field.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-        //      taskService.finish(task.getid());
-        //      console.log("执行中变为完成");
-        // },this);
-        // NPC1Field.addChild(NPC1);
-        // NPC2Field.addChild(NPC2);
-        // this.addChild(NPC1Field);
-        // this.addChild(NPC2Field);
-
       
         this.addChild(NPC1);
         this.addChild(NPC2);
         NPC1.x=200;NPC1.y=200;
         NPC2.x=500;NPC2.y=500;
-        // NPC1Field.x=200;
-        // NPC1Field.y=200;
-        // NPC1Field.width=100;
-        // NPC1Field.height=100;
-        // NPC2Field.x=600;
-        // NPC2Field.y=700;
-        // NPC2Field.width=100;
-        // NPC2Field.height=100;
+
+        var TaskPanelLogo:egret.Bitmap=new egret.Bitmap();
+        TaskPanelLogo.texture=RES.getRes("TaskPanelLogo_png");
+        TaskPanelLogo.x=100;
+        TaskPanelLogo.y=900;
+        TaskPanelLogo.scaleX=0.5;
+        TaskPanelLogo.scaleY=0.5;
+        this.addChild(TaskPanelLogo);
+        TaskPanelLogo.touchEnabled=true;
+        TaskPanelLogo.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+            var taskPanel=new TaskPanel();
+            taskPanel.call();
+            this.addChild(taskPanel);
+        },this);
     }
-
-    
-
-    // private _NPCFlashlist:{[index:string]:number}={
-    //     "01":6,//甘宁
-    //     "02":4 //陆逊
-    // }
 
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

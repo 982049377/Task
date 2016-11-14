@@ -8,9 +8,47 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         super();
         this._tasklist=[];
         this._textfield=new egret.TextField();
+        this._textfield.x=20;
+        this._textfield.y=20;
+        this._textfield.width=360;
+        this._textfield.height=200;
         this._returnButton=new egret.Bitmap();
+        this._returnButton.anchorOffsetX=this._returnButton.width/2;
+        this._returnButton.anchorOffsetY=this._returnButton.height/2;
+        this._returnButton.scaleX=0.4;
+        this._returnButton.scaleY=0.4;
+        this._returnButton.x=160;
+        this._returnButton.y=230;
         this._background=new egret.Bitmap();
+        this._background.width=400;
+        this._background.height=280;
         this._container=new egret.DisplayObjectContainer();
+        this._container.width=this._background.width;
+        this._container.height=this._background.height;
+        this._container.addChild(this._background);
+        this._container.addChild(this._returnButton);
+        this._container.addChild(this._textfield);
+        this.addChild(this._container);
+    }
+    public call(){
+        this.getTask();
+        this._textfield.text=this.getText();
+        this._background.texture=RES.getRes("TaskPanelbg_png");
+        this._returnButton.texture=RES.getRes(DialoguePanel.texturelist["退出"]);
+        console.log("TaskPanel.call");
+    }
+
+    private getText():string{
+        var str:string="";
+        for(var i=0;i<this._tasklist.length;i++)
+        {
+            str+=this._tasklist[i].getname()+"      ";
+            if(this._tasklist[i].getstatus()==statusType.Working)
+                str+="执行中\n";
+            if(this._tasklist[i].getstatus()==statusType.Cancomplete)
+                str+="可完成\n";
+        }
+        return str;
     }
     public onchange(task:Task){
         for(var s of this._tasklist){

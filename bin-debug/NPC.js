@@ -134,15 +134,15 @@ var NPC = (function (_super) {
         this._tasklist = TaskService.getIntance().getTaskByCustomRule(NPCRule);
     };
     p.onchange = function (task) {
-        for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
-            var s = _a[_i];
-            if (s.getid() == task.getid()) {
-                if (s.getfromNpcId() == this._id)
-                    console.log(this._name + ":发出任务");
-                if (s.gettoNpcId() == this._id)
-                    console.log(this._name + ":完成任务");
-            }
-        }
+        // for(var s of this._tasklist){
+        //     if(s.getid()==task.getid()){
+        //         if(s.getfromNpcId() == this._id)
+        //             console.log(this._name+":发出任务");
+        //         if(s.gettoNpcId() == this._id)
+        //             console.log(this._name+":完成任务");
+        //     }
+        // }
+        this.getTask();
         this.responseTask();
     };
     p.addTask = function (task) {
@@ -209,21 +209,4 @@ var NPC = (function (_super) {
     return NPC;
 }(egret.DisplayObjectContainer));
 egret.registerClass(NPC,'NPC',["Observer"]);
-var TaskPanel = (function () {
-    function TaskPanel() {
-        this._tasklist = [];
-    }
-    var d = __define,c=TaskPanel,p=c.prototype;
-    p.onchange = function (task) {
-        for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
-            var s = _a[_i];
-            if (s.getfromNpcId == task.getfromNpcId)
-                console.log(this + "发出任务");
-            if (s.gettoNpcId == task.gettoNpcId)
-                console.log(this + "完成任务");
-        }
-    };
-    return TaskPanel;
-}());
-egret.registerClass(TaskPanel,'TaskPanel',["Observer"]);
 //# sourceMappingURL=NPC.js.map

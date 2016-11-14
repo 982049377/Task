@@ -150,16 +150,18 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
     }
 
     public onchange(task:Task){
-        for(var s of this._tasklist){
-            if(s.getid()==task.getid()){
-                if(s.getfromNpcId() == this._id)
-                    console.log(this._name+":发出任务");
-                if(s.gettoNpcId() == this._id)
-                    console.log(this._name+":完成任务");
-            }
-        }
+        // for(var s of this._tasklist){
+        //     if(s.getid()==task.getid()){
+        //         if(s.getfromNpcId() == this._id)
+        //             console.log(this._name+":发出任务");
+        //         if(s.gettoNpcId() == this._id)
+        //             console.log(this._name+":完成任务");
+        //     }
+        // }
+        this.getTask()
         this.responseTask();
     }
+
     public addTask(task:Task){
         this._tasklist.push(task);
     }
@@ -215,20 +217,5 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
             }
         if(!this.hasSendTask()&&!this.hasReceiveTask())
             this.taskresponse.texture=RES.getRes("0_png");
-    }
-}
-
-
-
-
-class TaskPanel  implements Observer{
-    private _tasklist:Task[]=[];
-    public onchange(task:Task){
-        for(var s of this._tasklist){
-            if(s.getfromNpcId==task.getfromNpcId)
-                console.log(this+"发出任务");
-            if(s.gettoNpcId==task.gettoNpcId)
-                console.log(this+"完成任务");
-        }
     }
 }

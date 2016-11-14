@@ -18,6 +18,7 @@ var game_file_list = [
 	"bin-debug/NPCRole/State.js",
 	"bin-debug/NPCRole/Walk.js",
 	"bin-debug/Task.js",
+	"bin-debug/TaskPanel.js",
 	"bin-debug/TaskService.js",
 	//----auto game_file_list end----
 ];

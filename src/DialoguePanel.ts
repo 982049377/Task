@@ -5,7 +5,7 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     private _returnButton:egret.Bitmap;
     private _background:egret.Bitmap;
     private _container:egret.DisplayObjectContainer;
-    private texturelist:{[index:string]:string}={
+    public static texturelist:{[index:string]:string}={
         "接受":"UI01_png",
         "退出":"UI02_png",
         "提交":"UI03_png",
@@ -64,7 +64,7 @@ class DialoguePanel extends egret.DisplayObjectContainer{
         //console.log(this._textfield.text);
         this._firstbutton.texture=RES.getRes(this.getfirsttexture(task,fromself,toself));
         this._giveUpButton.texture=RES.getRes(this.getGiveUpTexture(task,fromself,toself));
-        this._returnButton.texture=RES.getRes(this.texturelist["退出"]);
+        this._returnButton.texture=RES.getRes(DialoguePanel.texturelist["退出"]);
         this.addChild(this._container);
         this.firstButtonlistener(task);
         this.giveUpButtonlistener(task,fromself,toself);
@@ -73,17 +73,17 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     private firstButtonlistener(task:Task){
         this._firstbutton.touchEnabled=true;
         this._firstbutton.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-            if(this._firstbutton.texture==RES.getRes(this.texturelist["接受"])){
+            if(this._firstbutton.texture==RES.getRes(DialoguePanel.texturelist["接受"])){
                 TaskService.getIntance().during(task.getid());
-                this._firstbutton.texture=RES.getRes(this.texturelist["不能接受"]);
-                this._giveUpButton.texture=RES.getRes(this.texturelist["放弃"]);
+                this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["不能接受"]);
+                this._giveUpButton.texture=RES.getRes(DialoguePanel.texturelist["放弃"]);
                 console.log("任务接受");
                 console.log(task.getstatus());
             }
-             if(this._firstbutton.texture==RES.getRes(this.texturelist["提交"])){
+             if(this._firstbutton.texture==RES.getRes(DialoguePanel.texturelist["提交"])){
                 TaskService.getIntance().finish(task.getid());
-                this._firstbutton.texture=RES.getRes(this.texturelist["不能提交"]);
-                this._giveUpButton.texture=RES.getRes(this.texturelist["不能放弃"]);
+                this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["不能提交"]);
+                this._giveUpButton.texture=RES.getRes(DialoguePanel.texturelist["不能放弃"]);
                 console.log("任务完成");
                 console.log(task.getstatus());
             }
@@ -92,16 +92,16 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     private giveUpButtonlistener(task:Task,fromself:boolean,toself:boolean){
         this._giveUpButton.touchEnabled=true;
         this._giveUpButton.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-            if(this._giveUpButton.texture==RES.getRes(this.texturelist["放弃"])){
+            if(this._giveUpButton.texture==RES.getRes(DialoguePanel.texturelist["放弃"])){
                 if(task.getstatus()==statusType.Working || task.getstatus()==statusType.Cancomplete){
                     TaskService.getIntance().accept(task.getid());
-                    this._giveUpButton.texture=RES.getRes(this.texturelist["不能放弃"]);
+                    this._giveUpButton.texture=RES.getRes(DialoguePanel.texturelist["不能放弃"]);
                     if(fromself && !toself)
-                        this._firstbutton.texture=RES.getRes(this.texturelist["接受"]);
+                        this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["接受"]);
                     if(toself && !fromself)
-                        this._firstbutton.texture=RES.getRes(this.texturelist["不能提交"]);
+                        this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["不能提交"]);
                     if(toself && fromself)
-                        this._firstbutton.texture=RES.getRes(this.texturelist["接受"]);
+                        this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["接受"]);
                     console.log("任务已放弃");
                     console.log(task.getstatus());
                 }
@@ -118,46 +118,46 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     private getfirsttexture(task:Task,fromself:boolean,toself:boolean):string{
         var str:string;
         if(task.getstatus()==statusType.Acceptable && fromself)
-            str=this.texturelist["接受"];
+            str=DialoguePanel.texturelist["接受"];
         if(task.getstatus()==statusType.Working && fromself)
-            str=this.texturelist["不能接受"];
+            str=DialoguePanel.texturelist["不能接受"];
         if(task.getstatus()==statusType.Unacceptable && fromself)
-            str=this.texturelist["不能接受"];
+            str=DialoguePanel.texturelist["不能接受"];
         if(task.getstatus()==statusType.Cancomplete && fromself)
-            str=this.texturelist["不能接受"];
+            str=DialoguePanel.texturelist["不能接受"];
 
         if(task.getstatus()==statusType.Cancomplete && toself)
-            str=this.texturelist["提交"];
+            str=DialoguePanel.texturelist["提交"];
         if(task.getstatus()==statusType.Working && toself)
-            str=this.texturelist["不能提交"];
+            str=DialoguePanel.texturelist["不能提交"];
         if(task.getstatus()==statusType.Acceptable && toself)
-            str=this.texturelist["不能提交"];
+            str=DialoguePanel.texturelist["不能提交"];
         if(task.getstatus()==statusType.Unacceptable && toself)
-            str=this.texturelist["不能提交"];
+            str=DialoguePanel.texturelist["不能提交"];
         return str;
     }
     private getGiveUpTexture(task:Task,fromself:boolean,toself:boolean):string{
         var str:string;
          if(task.getstatus()==statusType.Acceptable && fromself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
         if(task.getstatus()==statusType.Acceptable && !fromself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
         if(task.getstatus()==statusType.Working && fromself)
-            str=this.texturelist["放弃"];
+            str=DialoguePanel.texturelist["放弃"];
         if(task.getstatus()==statusType.Working && !fromself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
         if(task.getstatus()==statusType.Cancomplete && fromself)
-            str=this.texturelist["放弃"];
+            str=DialoguePanel.texturelist["放弃"];
         if(task.getstatus()==statusType.Cancomplete && !fromself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
          if(task.getstatus()==statusType.Working && toself)
-            str=this.texturelist["放弃"];
+            str=DialoguePanel.texturelist["放弃"];
         if(task.getstatus()==statusType.Working && !toself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
         if(task.getstatus()==statusType.Cancomplete && toself)
-            str=this.texturelist["放弃"];
+            str=DialoguePanel.texturelist["放弃"];
         if(task.getstatus()==statusType.Cancomplete && !toself)
-            str=this.texturelist["不能放弃"];
+            str=DialoguePanel.texturelist["不能放弃"];
         return str;
     }
 }
