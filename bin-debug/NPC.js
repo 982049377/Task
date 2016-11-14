@@ -55,6 +55,7 @@ var NPC = (function (_super) {
             dialogue.y = _this.parent.stage.height / 2 - _this.y;
             dialogue.call(task, fromself, toself);
             _this.addChild(dialogue);
+            _this.responseTask();
         }, this);
     };
     p.getOptimalTask = function () {

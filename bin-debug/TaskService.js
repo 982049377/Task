@@ -36,10 +36,10 @@ var TaskService = (function () {
         if (this._tasklist[id] == null) {
             throw '没有这个任务';
         }
-        if (this._tasklist[id].getstatus() == statusType.Unacceptable) {
-            this._tasklist[id].accept();
-            this.notify(id);
-        }
+        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+        this._tasklist[id].accept();
+        this.notify(id);
+        //}
     };
     p.during = function (id) {
         if (this._tasklist[id] == null) {

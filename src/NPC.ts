@@ -70,6 +70,7 @@ class NPC extends egret.DisplayObjectContainer  implements Observer{
             dialogue.y=this.parent.stage.height/2-this.y;
             dialogue.call(task,fromself,toself);
             this.addChild(dialogue);
+            this.responseTask();
         },this);
     }
     private getOptimalTask():Task{

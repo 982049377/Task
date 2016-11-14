@@ -43,10 +43,10 @@ class TaskService{
         {
             throw '没有这个任务';
         }
-        if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
             this._tasklist[id].accept();
             this.notify(id);
-        }
+        //}
     }
     public during(id:string){
         if(this._tasklist[id]==null)
