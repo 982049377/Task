@@ -33,7 +33,6 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
     }
     public call(){
         this.addChild(this._container);
-        
         this.getTask();
         var str="001";
         TaskService.getIntance().Canfinish(str);
