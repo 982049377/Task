@@ -32,7 +32,7 @@ var TaskPanel = (function (_super) {
     p.call = function () {
         this.addChild(this._container);
         this.getTask();
-        var str = "001";
+        //var str="001";
         //TaskService.getIntance().Canfinish(str);
         this._textfield.text = this.getText();
         this._background.texture = RES.getRes("TaskPanelbg_png");

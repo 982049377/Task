@@ -109,7 +109,7 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("001", "你好，冒险者", "打开任务面板，和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition());
+        var task = new Task("001", "你好，冒险者", "和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition());
         var task2 = new Task("002", "你好，冒险者", "攻打强敌10次", "02", "01", 10, new KillMonsterTaskCondition());
         taskService.addTask(task);
         taskService.addTask(task2);

@@ -47,7 +47,7 @@ class Task implements TaskConditionContext {
 
     public accept() {
         // console.log(this._status);
-        // this._status = statusType.Acceptable;
+         this._status = statusType.Working;
         // console.log(this._status);
         this._condition.onAccept(this);
     }

@@ -125,11 +125,11 @@ class Main extends egret.DisplayObjectContainer {
         sky.height = stageH;
 
         var taskService:TaskService =TaskService.getIntance() ;
-        var task:Task=new Task("001","你好，冒险者","打开任务面板，和陆逊对话","01","02",1,new NPCTalkTaskCondition());
-        var task2:Task=new Task("002","你好，冒险者","攻打强敌10次","02","01",10,new KillMonsterTaskCondition());
+        var task:Task=new Task("001","初识冒险者","和陆逊对话","01","02",1,new NPCTalkTaskCondition());
+        var task2:Task=new Task("002","消灭强敌","攻打强敌10次","02","01",10,new KillMonsterTaskCondition());
         taskService.addTask(task);
         taskService.addTask(task2);
-        
+
         var NPC1=new NPC("01");
         var NPC2=new NPC("02"); 
         taskService.addObserver(NPC1);

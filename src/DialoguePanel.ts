@@ -57,7 +57,7 @@ class DialoguePanel extends egret.DisplayObjectContainer{
     }
     public call(task:Task,fromself:boolean,toself:boolean){
         this._background.texture=RES.getRes("Taskbg_png");
-        console.log("Dialogue.call");
+        //console.log("Dialogue.call");
         this._textfield.text = task.getname();
         this._textfield.text += "\n";
         this._textfield.text += task.getdris();
@@ -77,15 +77,16 @@ class DialoguePanel extends egret.DisplayObjectContainer{
                 TaskService.getIntance().accept(task.getid());
                 this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["不能接受"]);
                 this._giveUpButton.texture=RES.getRes(DialoguePanel.texturelist["放弃"]);
-                console.log("任务接受");
-                console.log(task.getstatus());
+                //console.log("任务接受");
+                //console.log(task.getstatus());
             }
              if(this._firstbutton.texture==RES.getRes(DialoguePanel.texturelist["提交"])){
                 TaskService.getIntance().finish(task.getid());
                 this._firstbutton.texture=RES.getRes(DialoguePanel.texturelist["不能提交"]);
                 this._giveUpButton.texture=RES.getRes(DialoguePanel.texturelist["不能放弃"]);
-                console.log("任务完成");
-                console.log(task.getstatus());
+                //console.log("任务完成");
+                //console.log(task.getstatus());
+                //this.call();
             }
         },this)
     }

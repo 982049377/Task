@@ -41,6 +41,8 @@ var NPC = (function (_super) {
         var _this = this;
         this._role.touchEnabled = true;
         this._role.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            // this.getTask();
+            // this.responseTask();
             var task = _this.getOptimalTask();
             var fromself = false;
             var toself = false;
@@ -55,6 +57,7 @@ var NPC = (function (_super) {
             dialogue.y = _this.parent.stage.height / 2 - _this.y;
             dialogue.call(task, fromself, toself);
             _this.addChild(dialogue);
+            _this.getTask();
             _this.responseTask();
         }, this);
     };
@@ -70,12 +73,13 @@ var NPC = (function (_super) {
                         break;
                     case statusType.Cancomplete:
                         task = this._tasklist[s];
+                        console.log("结算");
                         break;
                     case statusType.Complete:
-                        task = this._tasklist[s];
+                        //task=this._tasklist[s];
                         break;
                     case statusType.Working:
-                        task = this._tasklist[s];
+                        //task=this._tasklist[s];
                         break;
                 }
             }
@@ -89,6 +93,7 @@ var NPC = (function (_super) {
                             break;
                         case statusType.Acceptable:
                             task = this._tasklist[s];
+                            console.log("提交");
                             break;
                         case statusType.Cancomplete:
                             break;
@@ -145,9 +150,9 @@ var NPC = (function (_super) {
         this.getTask();
         this.responseTask();
     };
-    p.addTask = function (task) {
-        this._tasklist.push(task);
-    };
+    // public addTask(task:Task){
+    //     this._tasklist.push(task);
+    // }
     //是否身上有未发出的任务
     p.hasSendTask = function () {
         for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
@@ -158,13 +163,13 @@ var NPC = (function (_super) {
         }
         return false;
     };
-    //是否身上有未接受的任务
+    //是否身上有未提交的任务
     p.hasReceiveTask = function () {
         for (var _i = 0, _a = this._tasklist; _i < _a.length; _i++) {
             var s = _a[_i];
-            if (s.gettoNpcId() == this._id && s.getstatus() == statusType.Working) {
-                return true;
-            }
+            // if(s.gettoNpcId()==this._id && s.getstatus()==statusType.Working){
+            //    return true;
+            // }
             if (s.gettoNpcId() == this._id && s.getstatus() == statusType.Cancomplete) {
                 return true;
             }
@@ -177,27 +182,22 @@ var NPC = (function (_super) {
         //任务发出不可接受，没有表情
         if (s.getstatus() == statusType.Unacceptable) {
             this.taskresponse.texture = RES.getRes("0_png");
-            console.log("0.png");
         }
         //任务发出可接受，蓝色问号
         if (s.getfromNpcId() == this._id && s.getstatus() == statusType.Acceptable) {
             this.taskresponse.texture = RES.getRes("1_png");
-            console.log("1.png");
         }
         //任务进行中，灰色问号
         if (s.gettoNpcId() == this._id && s.getstatus() == statusType.Working) {
             this.taskresponse.texture = RES.getRes("2_png");
-            console.log("2.png");
         }
         //任务可完成但没提交，金色问号
         if (s.gettoNpcId() == this._id && s.getstatus() == statusType.Cancomplete) {
             this.taskresponse.texture = RES.getRes("3_png");
-            console.log("3.png");
         }
         //任务提交完成，没有表情
         if (s.gettoNpcId() == this._id && s.getstatus() == statusType.Complete) {
             this.taskresponse.texture = RES.getRes("0_png");
-            console.log("0.png");
         }
         if (!this.hasSendTask() && !this.hasReceiveTask())
             this.taskresponse.texture = RES.getRes("0_png");

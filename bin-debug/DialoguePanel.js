@@ -40,7 +40,7 @@ var DialoguePanel = (function (_super) {
     var d = __define,c=DialoguePanel,p=c.prototype;
     p.call = function (task, fromself, toself) {
         this._background.texture = RES.getRes("Taskbg_png");
-        console.log("Dialogue.call");
+        //console.log("Dialogue.call");
         this._textfield.text = task.getname();
         this._textfield.text += "\n";
         this._textfield.text += task.getdris();
@@ -61,15 +61,11 @@ var DialoguePanel = (function (_super) {
                 TaskService.getIntance().accept(task.getid());
                 _this._firstbutton.texture = RES.getRes(DialoguePanel.texturelist["不能接受"]);
                 _this._giveUpButton.texture = RES.getRes(DialoguePanel.texturelist["放弃"]);
-                console.log("任务接受");
-                console.log(task.getstatus());
             }
             if (_this._firstbutton.texture == RES.getRes(DialoguePanel.texturelist["提交"])) {
                 TaskService.getIntance().finish(task.getid());
                 _this._firstbutton.texture = RES.getRes(DialoguePanel.texturelist["不能提交"]);
                 _this._giveUpButton.texture = RES.getRes(DialoguePanel.texturelist["不能放弃"]);
-                console.log("任务完成");
-                console.log(task.getstatus());
             }
         }, this);
     };
