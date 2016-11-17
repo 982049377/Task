@@ -36,19 +36,19 @@ var TaskService = (function () {
         if (this._tasklist[id] == null) {
             throw '没有这个任务';
         }
-        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
-        this._tasklist[id].accept();
-        this.notify(id);
-        //}
+        if (this._tasklist[id].getstatus() == statusType.Acceptable) {
+            this._tasklist[id].accept();
+            this.notify(id);
+        }
     };
-    p.during = function (id) {
+    p.Canaccept = function (id) {
         if (this._tasklist[id] == null) {
             throw '没有这个任务';
         }
-        if (this._tasklist[id].getstatus() == statusType.Acceptable) {
-            this._tasklist[id].during();
-            this.notify(id);
-        }
+        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+        this._tasklist[id].Canaccept();
+        this.notify(id);
+        //}
     };
     p.Canfinish = function (id) {
         if (this._tasklist[id] == null) {
@@ -68,5 +68,5 @@ var TaskService = (function () {
     TaskService.count = 0;
     return TaskService;
 }());
-egret.registerClass(TaskService,'TaskService');
+egret.registerClass(TaskService,'TaskService',["EventEmitter"]);
 //# sourceMappingURL=TaskService.js.map

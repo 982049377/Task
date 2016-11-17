@@ -26,23 +26,24 @@ var TaskPanel = (function (_super) {
         this._container.addChild(this._textfield);
         //this.addChild(this._container);
         this.getTask();
+        this.returnButtonListener();
     }
     var d = __define,c=TaskPanel,p=c.prototype;
     p.call = function () {
         this.addChild(this._container);
         this.getTask();
         var str = "001";
-        TaskService.getIntance().Canfinish(str);
+        //TaskService.getIntance().Canfinish(str);
         this._textfield.text = this.getText();
         this._background.texture = RES.getRes("TaskPanelbg_png");
         this._returnButton.texture = RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
-        this.returnButtonListener();
     };
     p.returnButtonListener = function () {
         var _this = this;
         this._returnButton.touchEnabled = true;
         this._returnButton.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            console.log("removeChild");
             _this.removeChild(_this._container);
             //this.parent.removeChild(this);
         }, this);

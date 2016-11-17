@@ -58,7 +58,7 @@ var DialoguePanel = (function (_super) {
         this._firstbutton.touchEnabled = true;
         this._firstbutton.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             if (_this._firstbutton.texture == RES.getRes(DialoguePanel.texturelist["接受"])) {
-                TaskService.getIntance().during(task.getid());
+                TaskService.getIntance().accept(task.getid());
                 _this._firstbutton.texture = RES.getRes(DialoguePanel.texturelist["不能接受"]);
                 _this._giveUpButton.texture = RES.getRes(DialoguePanel.texturelist["放弃"]);
                 console.log("任务接受");
@@ -79,7 +79,7 @@ var DialoguePanel = (function (_super) {
         this._giveUpButton.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             if (_this._giveUpButton.texture == RES.getRes(DialoguePanel.texturelist["放弃"])) {
                 if (task.getstatus() == statusType.Working || task.getstatus() == statusType.Cancomplete) {
-                    TaskService.getIntance().accept(task.getid());
+                    TaskService.getIntance().Canaccept(task.getid());
                     _this._giveUpButton.texture = RES.getRes(DialoguePanel.texturelist["不能放弃"]);
                     if (fromself && !toself)
                         _this._firstbutton.texture = RES.getRes(DialoguePanel.texturelist["接受"]);

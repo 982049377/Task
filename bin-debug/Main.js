@@ -109,15 +109,17 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("001", "你好，冒险者", "打开任务面板，和陆逊对话", "01", "02");
+        var task = new Task("001", "你好，冒险者", "打开任务面板，和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition());
+        var task2 = new Task("002", "你好，冒险者", "攻打强敌10次", "02", "01", 10, new KillMonsterTaskCondition());
         taskService.addTask(task);
+        taskService.addTask(task2);
         var NPC1 = new NPC("01");
         var NPC2 = new NPC("02");
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
         NPC1.call();
         NPC2.call();
-        taskService.accept(task.getid());
+        // taskService.accept(task.getid());
         this.addChild(NPC1);
         this.addChild(NPC2);
         NPC1.x = 200;
@@ -132,13 +134,25 @@ var Main = (function (_super) {
         TaskPanelLogo.scaleY = 0.5;
         this.addChild(TaskPanelLogo);
         TaskPanelLogo.touchEnabled = true;
-        //var taskPanel=new TaskPanel();
+        var taskPanel = new TaskPanel();
         TaskPanelLogo.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
-            var taskPanel = new TaskPanel();
+            //var taskPanel=new TaskPanel();
             taskPanel.call();
             _this.addChild(taskPanel);
             taskPanel.x = 100;
             taskPanel.y = 600;
+        }, this);
+        var scene = new SceneService();
+        var Monster = new egret.Bitmap();
+        Monster.texture = RES.getRes("Monster_png");
+        Monster.x = 400;
+        Monster.y = 900;
+        Monster.scaleX = 0.5;
+        Monster.scaleY = 0.5;
+        this.addChild(Monster);
+        Monster.touchEnabled = true;
+        Monster.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
+            scene.notify("002");
         }, this);
     };
     /**

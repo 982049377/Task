@@ -1,4 +1,4 @@
-class TaskService{
+class TaskService implements EventEmitter{
     //private _tasklist:Task[]=[];
     private _observerlist:Observer[]=[];
     public static instance;// = new TaskService;
@@ -43,21 +43,22 @@ class TaskService{
         {
             throw '没有这个任务';
         }
-        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+        if(this._tasklist[id].getstatus()==statusType.Acceptable){
             this._tasklist[id].accept();
             this.notify(id);
-        //}
+        }
     }
-    public during(id:string){
+    public Canaccept(id:string){
         if(this._tasklist[id]==null)
         {
             throw '没有这个任务';
         }
-        if(this._tasklist[id].getstatus()==statusType.Acceptable){
-            this._tasklist[id].during();
+        //if(this._tasklist[id].getstatus()==statusType.Unacceptable){
+            this._tasklist[id].Canaccept();
             this.notify(id);
-        }
+        //}
     }
+    
     public Canfinish(id:string){
         if(this._tasklist[id]==null)
         {
@@ -72,4 +73,10 @@ class TaskService{
         for(var s of this._observerlist)
             s.onchange(this._tasklist[id]);
     }
+}
+
+interface EventEmitter{
+    addObserver(observer:Observer);
+
+    notify(id:string);
 }

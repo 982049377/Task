@@ -17,6 +17,7 @@ var game_file_list = [
 	"bin-debug/NPCRole/Role.js",
 	"bin-debug/NPCRole/State.js",
 	"bin-debug/NPCRole/Walk.js",
+	"bin-debug/SceneService.js",
 	"bin-debug/Task.js",
 	"bin-debug/TaskPanel.js",
 	"bin-debug/TaskService.js",

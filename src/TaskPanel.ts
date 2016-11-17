@@ -22,6 +22,7 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         this._background=new egret.Bitmap();
         this._background.width=400;
         this._background.height=280;
+
         this._container=new egret.DisplayObjectContainer();
         this._container.width=this._background.width;
         this._container.height=this._background.height;
@@ -30,22 +31,23 @@ class TaskPanel extends egret.DisplayObjectContainer implements Observer {
         this._container.addChild(this._textfield);
         //this.addChild(this._container);
         this.getTask();
+        this.returnButtonListener();
     }
     public call(){
         this.addChild(this._container);
         this.getTask();
         var str="001";
-        TaskService.getIntance().Canfinish(str);
+        //TaskService.getIntance().Canfinish(str);
         this._textfield.text=this.getText();
         this._background.texture=RES.getRes("TaskPanelbg_png");
         this._returnButton.texture=RES.getRes(DialoguePanel.texturelist["退出"]);
         console.log("TaskPanel.call");
-        this.returnButtonListener();
     }
     
-    private returnButtonListener(){
+    private returnButtonListener(){//侦听最好放在构造函数里
         this._returnButton.touchEnabled=true;
         this._returnButton.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
+            console.log("removeChild");
             this.removeChild(this._container);
             //this.parent.removeChild(this);
         },this)
