@@ -1,18 +1,29 @@
 var Task = (function () {
+    // preid:string,
     function Task(id, name, dris, fromNpcId, toNpcId, total, condition) {
         this._current = 0;
         this._total = -1;
+        // this._preid=preid;
         this._id = id;
         this._name = name;
         this._dris = dris;
         this._fromNpcId = fromNpcId;
         this._toNpcId = toNpcId;
-        this._status = statusType.Acceptable;
         this._total = total;
         this._current = 0;
         this._condition = condition;
+        this._status = statusType.Acceptable;
     }
     var d = __define,c=Task,p=c.prototype;
+    // private setstatus(){
+    //     if(this._preid==null)
+    //         this._status = statusType.Acceptable;
+    //     if(this._preid!=null){
+    //         var task=new Task()
+    //         if()
+    //         this._status = statusType.Acceptable;
+    //     }
+    // }
     p.getdris = function () {
         return this._dris;
     };

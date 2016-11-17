@@ -1,4 +1,5 @@
 class Task implements TaskConditionContext {
+    // private _preid:string;
     private _id: string;
     private _name: string;
     private _dris: string;
@@ -8,18 +9,30 @@ class Task implements TaskConditionContext {
     private _fromNpcId: string;
     private _toNpcId: string;
     private _condition: TaskCondition;
-
+// preid:string,
     constructor(id: string, name: string, dris: string, fromNpcId: string, toNpcId: string,total:number,condition:TaskCondition) {
+        // this._preid=preid;
         this._id = id;
         this._name = name;
         this._dris = dris;
         this._fromNpcId = fromNpcId;
         this._toNpcId = toNpcId;
-        this._status = statusType.Acceptable;
         this._total = total;
         this._current = 0;
         this._condition=condition;
+        this._status = statusType.Acceptable;
+        
     }
+    // private setstatus(){
+    //     if(this._preid==null)
+    //         this._status = statusType.Acceptable;
+    //     if(this._preid!=null){
+    //         var task=new Task()
+    //         if()
+    //         this._status = statusType.Acceptable;
+    //     }
+    // }
+
     public getdris(): string {
         return this._dris;
     }
@@ -100,7 +113,7 @@ class NPCTalkTaskCondition implements TaskCondition {
 
     onAccept(task: TaskConditionContext) {
         task.setcurrent();
-        console.log(task.getcurrent());
+    //    console.log(task.getcurrent());
     }
 
     // onsubmit(task: TaskConditionContext) {
