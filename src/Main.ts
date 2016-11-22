@@ -125,6 +125,7 @@ class Main extends egret.DisplayObjectContainer {
             taskCondition=new KillMonsterTaskCondition();
         return taskCondition;
     }
+    
 //生成任务
     private creatTask(id:string):Task{
         var taskCondition=null;
