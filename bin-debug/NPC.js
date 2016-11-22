@@ -73,7 +73,7 @@ var NPC = (function (_super) {
                         break;
                     case statusType.Cancomplete:
                         task = this._tasklist[s];
-                        console.log("结算");
+                        //console.log("结算");
                         break;
                     case statusType.Complete:
                         //task=this._tasklist[s];

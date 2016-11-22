@@ -1,9 +1,9 @@
 var Task = (function () {
     // preid:string,
-    function Task(id, name, dris, fromNpcId, toNpcId, total, condition) {
+    function Task(id, name, dris, fromNpcId, toNpcId, total, condition, toid) {
         this._current = 0;
         this._total = -1;
-        // this._preid=preid;
+        this._toid = toid;
         this._id = id;
         this._name = name;
         this._dris = dris;
@@ -12,7 +12,7 @@ var Task = (function () {
         this._total = total;
         this._current = 0;
         this._condition = condition;
-        this._status = statusType.Acceptable;
+        this._status = statusType.Unacceptable;
     }
     var d = __define,c=Task,p=c.prototype;
     // private setstatus(){
@@ -47,6 +47,9 @@ var Task = (function () {
         this._status = statusType.Complete;
         // console.log(this._status);
         //   this._condition.onsubmit(this);
+        if (this._toid != null) {
+            TaskService.getIntance().Canaccept(this._toid);
+        }
     };
     p.accept = function () {
         // console.log(this._status);
@@ -92,7 +95,7 @@ var NPCTalkTaskCondition = (function () {
     var d = __define,c=NPCTalkTaskCondition,p=c.prototype;
     p.onAccept = function (task) {
         task.setcurrent();
-        console.log(task.getcurrent());
+        //    console.log(task.getcurrent());
     };
     return NPCTalkTaskCondition;
 }());

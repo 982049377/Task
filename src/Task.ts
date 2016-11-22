@@ -1,5 +1,5 @@
 class Task implements TaskConditionContext {
-    // private _preid:string;
+    private _toid:string;
     private _id: string;
     private _name: string;
     private _dris: string;
@@ -10,8 +10,9 @@ class Task implements TaskConditionContext {
     private _toNpcId: string;
     private _condition: TaskCondition;
 // preid:string,
-    constructor(id: string, name: string, dris: string, fromNpcId: string, toNpcId: string,total:number,condition:TaskCondition) {
-        // this._preid=preid;
+    constructor(id: string, name: string, dris: string, fromNpcId: string, 
+                    toNpcId: string,total:number,condition:TaskCondition,toid:string) {
+        this._toid=toid;
         this._id = id;
         this._name = name;
         this._dris = dris;
@@ -20,7 +21,7 @@ class Task implements TaskConditionContext {
         this._total = total;
         this._current = 0;
         this._condition=condition;
-        this._status = statusType.Acceptable;
+        this._status = statusType.Unacceptable;
         
     }
     // private setstatus(){
@@ -56,6 +57,9 @@ class Task implements TaskConditionContext {
         this._status = statusType.Complete;
         // console.log(this._status);
      //   this._condition.onsubmit(this);
+     if(this._toid!=null){
+        TaskService.getIntance().Canaccept(this._toid);
+     }
     }
 
     public accept() {

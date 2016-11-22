@@ -109,14 +109,15 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("001", "初识冒险者", "和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition());
-        var task2 = new Task("002", "消灭强敌", "攻打强敌10次", "02", "01", 10, new KillMonsterTaskCondition());
+        var task = new Task("001", "初识冒险者", "和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition(), "002");
+        var task2 = new Task("002", "消灭强敌", "攻打强敌10次", "02", "01", 10, new KillMonsterTaskCondition(), null);
         taskService.addTask(task);
         taskService.addTask(task2);
         var NPC1 = new NPC("01");
         var NPC2 = new NPC("02");
         taskService.addObserver(NPC1);
         taskService.addObserver(NPC2);
+        taskService.Canaccept("001");
         NPC1.call();
         NPC2.call();
         // taskService.accept(task.getid());
