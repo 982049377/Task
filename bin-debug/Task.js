@@ -86,6 +86,22 @@ var Task = (function () {
             this.em.notify(this._id);
         }
     };
+    Task.Task_LIST = {
+        "001": { name: "初识冒险者",
+            dris: "和陆逊对话",
+            fromNPCid: "01",
+            toNPCid: "02",
+            total: 1,
+            TaskCondition: new NPCTalkTaskCondition(),
+            toid: "002" },
+        "002": { name: "陆逊",
+            dris: "攻打强敌10次",
+            fromNPCid: "02",
+            toNPCid: "01",
+            total: 10,
+            TaskCondition: new KillMonsterTaskCondition(),
+            toid: null } //陆逊
+    };
     return Task;
 }());
 egret.registerClass(Task,'Task',["TaskConditionContext"]);

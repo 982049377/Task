@@ -100,6 +100,11 @@ var Main = (function (_super) {
      * 创建游戏场景
      * Create a game scene
      */
+    p.creatTask = function (id) {
+        var name = Task.Task_LIST[id].name;
+        var task = new Task(id, name, Task.Task_LIST[id].dris, Task.Task_LIST[id].fromNPCid, Task.Task_LIST[id].toNPCid, Task.Task_LIST[id].total, Task.Task_LIST[id].TaskCondition, Task.Task_LIST[id].toid);
+        return task;
+    };
     p.createGameScene = function () {
         var _this = this;
         var sky = this.createBitmapByName("bg_jpg");
@@ -109,8 +114,8 @@ var Main = (function (_super) {
         sky.width = stageW;
         sky.height = stageH;
         var taskService = TaskService.getIntance();
-        var task = new Task("001", "初识冒险者", "和陆逊对话", "01", "02", 1, new NPCTalkTaskCondition(), "002");
-        var task2 = new Task("002", "消灭强敌", "攻打强敌10次", "02", "01", 10, new KillMonsterTaskCondition(), null);
+        var task = this.creatTask("001");
+        var task2 = this.creatTask("002");
         taskService.addTask(task);
         taskService.addTask(task2);
         var NPC1 = new NPC("01");

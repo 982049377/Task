@@ -116,6 +116,19 @@ class Main extends egret.DisplayObjectContainer {
      * 创建游戏场景
      * Create a game scene
      */
+    
+    private creatTask(id:string):Task{
+        var name=Task.Task_LIST[id].name;
+        var task=new Task(  id,
+                            name,
+                            Task.Task_LIST[id].dris,
+                            Task.Task_LIST[id].fromNPCid,
+                            Task.Task_LIST[id].toNPCid,
+                            Task.Task_LIST[id].total,
+                            Task.Task_LIST[id].TaskCondition,
+                            Task.Task_LIST[id].toid);
+        return task;
+    }
     private createGameScene():void {
         var sky:egret.Bitmap = this.createBitmapByName("bg_jpg");
         this.addChild(sky);
@@ -125,8 +138,8 @@ class Main extends egret.DisplayObjectContainer {
         sky.height = stageH;
 
         var taskService:TaskService =TaskService.getIntance() ;
-        var task:Task=new Task("001","初识冒险者","和陆逊对话","01","02",1,new NPCTalkTaskCondition(),"002");
-        var task2:Task=new Task("002","消灭强敌","攻打强敌10次","02","01",10,new KillMonsterTaskCondition(),null);
+        var task:Task=this.creatTask("001");
+        var task2:Task=this.creatTask("002");
         taskService.addTask(task);
         taskService.addTask(task2);
 

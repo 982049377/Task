@@ -1,4 +1,20 @@
 class Task implements TaskConditionContext {
+    public static Task_LIST:{[index:string]:{name:string,dris:string,fromNPCid:string,toNPCid:string,total:number,TaskCondition:TaskCondition,toid:string}} = {
+        "001":{ name:"初识冒险者",
+                dris:"和陆逊对话",
+                fromNPCid:"01",
+                toNPCid:"02",
+                total:1,
+                TaskCondition:new NPCTalkTaskCondition(),
+                toid:"002"},//甘宁
+        "002":{ name:"陆逊",
+                dris:"攻打强敌10次",
+                fromNPCid:"02",
+                toNPCid:"01",
+                total:10,
+                TaskCondition:new KillMonsterTaskCondition(),
+                toid:null} //陆逊
+    }
     private _toid:string;
     private _id: string;
     private _name: string;
@@ -115,6 +131,7 @@ interface TaskCondition {
 
 class NPCTalkTaskCondition implements TaskCondition {
 
+    constructor(){}
     onAccept(task: TaskConditionContext) {
         task.setcurrent();
     //    console.log(task.getcurrent());
@@ -125,7 +142,7 @@ class NPCTalkTaskCondition implements TaskCondition {
     // }
 }
 class KillMonsterTaskCondition implements TaskCondition,Observer{
-
+    constructor(){}
     onAccept(task: TaskConditionContext) {
       
     }
