@@ -116,16 +116,26 @@ class Main extends egret.DisplayObjectContainer {
      * 创建游戏场景
      * Create a game scene
      */
-    
+//生成任务条件 
+    private creatTaskCondition(type:string){
+        var taskCondition=null;
+        if(type=="NPCTalkTaskCondition")
+            taskCondition=new NPCTalkTaskCondition();
+        if(type=="KillMonsterTaskCondition")
+            taskCondition=new KillMonsterTaskCondition();
+        return taskCondition;
+    }
+//生成任务
     private creatTask(id:string):Task{
-        var name=Task.Task_LIST[id].name;
+        var taskCondition=null;
+        taskCondition=this.creatTaskCondition(Task.Task_LIST[id].TaskCondition);
         var task=new Task(  id,
-                            name,
+                            Task.Task_LIST[id].name,
                             Task.Task_LIST[id].dris,
                             Task.Task_LIST[id].fromNPCid,
                             Task.Task_LIST[id].toNPCid,
                             Task.Task_LIST[id].total,
-                            Task.Task_LIST[id].TaskCondition,
+                            taskCondition,
                             Task.Task_LIST[id].toid);
         return task;
     }

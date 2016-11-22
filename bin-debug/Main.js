@@ -100,9 +100,20 @@ var Main = (function (_super) {
      * 创建游戏场景
      * Create a game scene
      */
+    //生成任务条件 
+    p.creatTaskCondition = function (type) {
+        var taskCondition = null;
+        if (type == "NPCTalkTaskCondition")
+            taskCondition = new NPCTalkTaskCondition();
+        if (type == "KillMonsterTaskCondition")
+            taskCondition = new KillMonsterTaskCondition();
+        return taskCondition;
+    };
+    //生成任务
     p.creatTask = function (id) {
-        var name = Task.Task_LIST[id].name;
-        var task = new Task(id, name, Task.Task_LIST[id].dris, Task.Task_LIST[id].fromNPCid, Task.Task_LIST[id].toNPCid, Task.Task_LIST[id].total, Task.Task_LIST[id].TaskCondition, Task.Task_LIST[id].toid);
+        var taskCondition = null;
+        taskCondition = this.creatTaskCondition(Task.Task_LIST[id].TaskCondition);
+        var task = new Task(id, Task.Task_LIST[id].name, Task.Task_LIST[id].dris, Task.Task_LIST[id].fromNPCid, Task.Task_LIST[id].toNPCid, Task.Task_LIST[id].total, taskCondition, Task.Task_LIST[id].toid);
         return task;
     };
     p.createGameScene = function () {

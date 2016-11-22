@@ -1,20 +1,4 @@
 class Task implements TaskConditionContext {
-    public static Task_LIST:{[index:string]:{name:string,dris:string,fromNPCid:string,toNPCid:string,total:number,TaskCondition:TaskCondition,toid:string}} = {
-        "001":{ name:"初识冒险者",
-                dris:"和陆逊对话",
-                fromNPCid:"01",
-                toNPCid:"02",
-                total:1,
-                TaskCondition:new NPCTalkTaskCondition(),
-                toid:"002"},//甘宁
-        "002":{ name:"陆逊",
-                dris:"攻打强敌10次",
-                fromNPCid:"02",
-                toNPCid:"01",
-                total:10,
-                TaskCondition:new KillMonsterTaskCondition(),
-                toid:null} //陆逊
-    }
     private _toid:string;
     private _id: string;
     private _name: string;
@@ -26,6 +10,22 @@ class Task implements TaskConditionContext {
     private _toNpcId: string;
     private _condition: TaskCondition;
 // preid:string,
+    public static Task_LIST:{[index:string]:{name:string,dris:string,fromNPCid:string,toNPCid:string,total:number,TaskCondition:string,toid:string}} = {
+        "001":{ name:"初识冒险者",
+                dris:"和陆逊对话",
+                fromNPCid:"01",
+                toNPCid:"02",
+                total:1,
+                TaskCondition:"NPCTalkTaskCondition",
+                toid:"002"},//甘宁
+        "002":{ name:"陆逊",
+                dris:"攻打强敌10次",
+                fromNPCid:"02",
+                toNPCid:"01",
+                total:10,
+                TaskCondition:"KillMonsterTaskCondition",
+                toid:null} //陆逊
+    }
     constructor(id: string, name: string, dris: string, fromNpcId: string, 
                     toNpcId: string,total:number,condition:TaskCondition,toid:string) {
         this._toid=toid;
