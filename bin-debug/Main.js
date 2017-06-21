@@ -129,6 +129,10 @@ var Main = (function (_super) {
         var task2 = this.creatTask("002");
         taskService.addTask(task);
         taskService.addTask(task2);
+        console.log(typeof (taskService));
+        if (typeof (task2._condition) == "KillMonsterTaskCondition") {
+            console.log("truetruetruetruetruetruetruetrue");
+        }
         var NPC1 = new NPC("01");
         var NPC2 = new NPC("02");
         taskService.addObserver(NPC1);

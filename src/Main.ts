@@ -153,7 +153,6 @@ class Main extends egret.DisplayObjectContainer {
         var task2:Task=this.creatTask("002");
         taskService.addTask(task);
         taskService.addTask(task2);
-
         var NPC1=new NPC("01");
         var NPC2=new NPC("02"); 
         taskService.addObserver(NPC1);
